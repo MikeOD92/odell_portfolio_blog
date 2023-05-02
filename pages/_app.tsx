@@ -7,7 +7,13 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <div>
-      <button onClick={() => setlight(!light)}> Change mode</button>
+      <div className="absolute" onClick={() => setlight(!light)}>
+        <div
+          className={`rounded-full w-10 h-10 ${
+            light ? "bg-zinc-500" : "bg-zinc-300"
+          }`}
+        ></div>
+      </div>
       <Component {...pageProps} light={light} />;
     </div>
   );

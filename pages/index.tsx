@@ -3,13 +3,13 @@ import react, { useState } from "react";
 
 import { FcLinux } from "react-icons/fc";
 import { DiAptana } from "react-icons/di";
-export default function Home() {
-  const [light, setlight] = useState(false);
-
+const Home = (props: any) => {
+  // const [light, setlight] = useState(false);
+  let light = props.light;
   return (
     <main className={`${light ? "bg-white" : "bg-black"}`}>
       <div className="flex flex-row w-full">
-        <button onClick={() => setlight(!light)}> Change mode</button>
+        {/* <button onClick={() => setlight(!light)}> Change mode</button> */}
         <div
           className={`w-1/2 h-screen ${light ? "text-black" : "text-white"}`}
         >
@@ -30,7 +30,11 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="w-1/2 bg-[url(/img/rocks2.jpg)] bg-cover"></div>
+        <div
+          className={`w-1/2 ${
+            light ? "bg-[url(/img/snowhole2.jpg)]" : "bg-[url(/img/rocks2.jpg)]"
+          } bg-cover`}
+        ></div>
       </div>
       <div className="h-screen w-full flex flex-row pt-20">
         <div className="text-5xl text-center p-5 w-full self-end">
@@ -43,4 +47,12 @@ export default function Home() {
       </div>
     </main>
   );
-}
+};
+export default Home;
+// export async function getStaticProps(context: any) {
+//   return {
+//     props: {
+//       light: context.light,
+//     }, // will be passed to the page component as props
+//   };
+// }
