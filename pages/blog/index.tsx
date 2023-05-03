@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import react, { useState } from "react";
 
-export default function App(props: AppProps) {
+export default function App(props: any) {
   return (
     <div className="min-h-screen">
       <div>
