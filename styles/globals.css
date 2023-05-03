@@ -17,14 +17,22 @@
 * {
   font-family: "Oxygen", sans-serif;
 }
-.title {
+.titletxt {
   font-family: "Raleway", sans-serif;
+  font-weight: 200;
 }
 .displaytxt {
   font-family: "UnifrakturCook", cursive;
 }
-.body {
+.bodytxt {
   font-family: "Oxygen", sans-serif;
+}
+.scrollDisplay::-webkit-scrollbar {
+  display: none;
+}
+.scrollDisplay {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 body {
   color: rgb(var(--foreground-rgb));
