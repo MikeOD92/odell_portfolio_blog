@@ -1,18 +1,30 @@
 import Image from "next/image";
 import react, { useState } from "react";
 import Link from "next/link";
-import { animate, motion, useScroll } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
 const Home = (props: any) => {
   let light = props.light;
   const { scrollY } = useScroll();
+  const [startAnimation, setStartAnimation] = useState(false);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    console.log(latest);
+    if (latest > 100 && startAnimation !== true) {
+      setStartAnimation(true);
+    } else if (latest <= 100 && startAnimation !== false) {
+      setStartAnimation(false);
+    }
+  });
 
   return (
     <div>
-      <div className="flex flex-col md:flex-row w-full">
+      <div className="flex flex-col md:flex-row w-full overflow-hidden">
         <motion.div
           className={`w-full h-screen ${light ? "text-black" : "text-white"}`}
-          style={{ x: scrollY }}
+          animate={
+            startAnimation ? { x: 250, transition: { duration: 1 } } : { x: 0 }
+          }
         >
           <div>
             <div className="absolute top-1/3 left-24">
@@ -34,9 +46,6 @@ const Home = (props: any) => {
 
         <motion.div
           layout
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ type: "easeout", duration: 0.4 }}
           style={{ x: scrollY }}
           className={`w-full ${
             light ? "bg-[url(/img/snowhole2.jpg)]" : "bg-[url(/img/rocks2.jpg)]"
@@ -76,7 +85,7 @@ const Home = (props: any) => {
             </h3>
           </Link>
           <div className="overflow-auto scrollDisplay">
-            {/* ///  this could easily be a map over get serverside props or static props  */}
+            {/* ///  this could easily be a map over get serverside props or static props not good to write it like this but okay for layingout right now */}
             <Link href="/portfolio" className="w-full">
               <motion.div
                 initial={{ opacity: 0 }}
@@ -102,7 +111,7 @@ const Home = (props: any) => {
                   src="/img/mycositepic1.png"
                   width="2000"
                   height="2000"
-                  alt="portfolio image of randomman.net"
+                  alt="portfolio image of jamesolivermycology.com"
                   className="w-full my-5"
                 />
               </motion.div>
@@ -115,10 +124,10 @@ const Home = (props: any) => {
                 transition={{ type: "easeIn", duration: 1.3 }}
               >
                 <Image
-                  src="/img/inglewoodsitepic1.png"
+                  src="/img/inglewoodsitepic2.png"
                   width="2000"
                   height="2000"
-                  alt="portfolio image of randomman.net"
+                  alt="portfolio image of components made for Inglewood Open Studios event page"
                   className="w-full my-5"
                 />
               </motion.div>
