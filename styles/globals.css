@@ -34,6 +34,15 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+.skillsDiv {
+  font-size: 4rem;
+  padding: 10px;
+  display: flex;
+}
+.skillsDiv p {
+  font-size: 12px;
+  padding: 5px;
+}
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(

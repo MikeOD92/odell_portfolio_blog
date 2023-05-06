@@ -9,7 +9,6 @@ const Home = (props: any) => {
   const [startAnimation, setStartAnimation] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    console.log(latest);
     if (latest > 100 && startAnimation !== true) {
       setStartAnimation(true);
     } else if (latest <= 100 && startAnimation !== false) {
