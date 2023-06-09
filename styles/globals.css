@@ -38,6 +38,8 @@
   font-size: 4rem;
   padding: 10px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .skillsDiv p {
   font-size: 12px;

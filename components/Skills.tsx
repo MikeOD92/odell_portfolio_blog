@@ -53,7 +53,7 @@ export default function Skills(props: any) {
           }`}
         >
           <h3 className="text-4xl titletxt"> Front End</h3>
-          <div className="flex flex-row flex-wrap">
+          <div className="flex flex-row flex-wrap justify-between">
             <div className="skillsDiv">
               <DiHtml5 />
               <p>HTML5</p>
@@ -112,7 +112,7 @@ export default function Skills(props: any) {
           }`}
         >
           <h3 className="text-4xl titletxt"> Back End </h3>
-          <div className="flex flex-row flex-wrap">
+          <div className="flex flex-row flex-wrap justify-between">
             <div className="skillsDiv">
               <DiPython />
               <p>Python</p>
@@ -167,7 +167,7 @@ export default function Skills(props: any) {
           }`}
         >
           <h3 className="text-4xl titletxt"> Misc.</h3>
-          <div className="flex flex-row flex-wrap">
+          <div className="flex flex-row flex-wrap justify-between">
             <div className="skillsDiv">
               <SiGit />
               <p>Git</p>
