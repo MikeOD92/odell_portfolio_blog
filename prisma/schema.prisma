@@ -7,16 +7,31 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model posts {
-  id    Int     @id @default(autoincrement()) @db.UnsignedInt
+model Post {
+  id    Int     @id @default(autoincrement())
   title String  @db.VarChar(150)
   body  String? @db.Text
+  imgs  PostImg[]
 }
 
-model projects {
-  id    Int     @id @default(autoincrement()) @db.UnsignedInt
+model Project {
+  id    Int     @id @default(autoincrement())
   title String  @db.VarChar(150)
   des   String? @db.Text
   body  String? @db.Text
-  img   String? @db.VarChar(150)
+  imgs  ProjectImg[]
+}
+
+model ProjectImg {
+  id Int @id @default(autoincrement())
+  parentId Int
+  parent Project @relation(fields: [parentId], references: [id])
+  location String  @db.VarChar(150)
+}
+
+model PostImg {
+  id Int @id @default(autoincrement())
+  parentId Int
+  parent Post @relation(fields: [parentId], references: [id])
+  location String  @db.VarChar(150)
 }
