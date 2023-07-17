@@ -6,6 +6,7 @@ import Projects from "@/components/Projects";
 import { Gi3DStairs } from "react-icons/gi";
 import Link from "next/link";
 import { useScroll, useMotionValueEvent, useInView } from "framer-motion";
+import { prisma } from "../api/db";
 
 export default function Portfolio(props: any) {
   let light = props.light;
@@ -93,8 +94,15 @@ export default function Portfolio(props: any) {
           </div>
         </div>
 
-        <Projects light={light} />
+        <Projects light={light} posts={props.posts} />
       </div>
     </div>
   );
 }
+export const getServerSideProps = async () => {
+  const posts = await prisma.project.findMany({
+    include: { imgs: true },
+  });
+
+  return { props: { posts } };
+};

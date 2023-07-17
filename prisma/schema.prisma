@@ -20,6 +20,8 @@ model Project {
   des   String? @db.Text
   body  String? @db.Text
   imgs  ProjectImg[]
+
+  @@map(name: "project")
 }
 
 model ProjectImg {
@@ -27,6 +29,8 @@ model ProjectImg {
   parentId Int
   parent Project @relation(fields: [parentId], references: [id])
   location String  @db.VarChar(150)
+
+  @@map(name: "projectImg")
 }
 
 model PostImg {
