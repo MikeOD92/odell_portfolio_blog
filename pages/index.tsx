@@ -2,6 +2,7 @@ import Image from "next/image";
 import react, { useState } from "react";
 import Link from "next/link";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { prisma } from "./api/db";
 
 const Home = (props: any) => {
   let light = props.light;
@@ -84,53 +85,25 @@ const Home = (props: any) => {
             </h3>
           </Link>
           <div className="overflow-auto scrollDisplay">
-            {/* ///  this could easily be a map over get serverside props or static props not good to write it like this but okay for layingout right now */}
-            <Link href="/portfolio" className="w-full">
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ type: "easeIn", duration: 1.3 }}
-              >
-                <Image
-                  src="/img/randommansitepic1.png"
-                  width="2000"
-                  height="2000"
-                  alt="portfolio image of randomman.net"
-                  className="w-full mb-5"
-                />
-              </motion.div>
-            </Link>
-            <Link href="/portfolio" className="w-full">
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ type: "easeIn", duration: 1.3 }}
-              >
-                <Image
-                  src="/img/mycositepic1.png"
-                  width="2000"
-                  height="2000"
-                  alt="portfolio image of jamesolivermycology.com"
-                  className="w-full my-5"
-                />
-              </motion.div>
-            </Link>
-
-            <Link href="/portfolio" className="w-full">
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ type: "easeIn", duration: 1.3 }}
-              >
-                <Image
-                  src="/img/inglewoodsitepic2.png"
-                  width="2000"
-                  height="2000"
-                  alt="portfolio image of components made for Inglewood Open Studios event page"
-                  className="w-full my-5"
-                />
-              </motion.div>
-            </Link>
+            {props.projectImg.map((img: any, i: Number) => {
+              return (
+                <Link key={`img ${i}`} href="/portfolio" className="w-full">
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ type: "easeIn", duration: 1.3 }}
+                  >
+                    <Image
+                      src={img.location}
+                      width="2000"
+                      height="2000"
+                      alt="portfolio screenshot of website"
+                      className="w-full mb-5"
+                    />
+                  </motion.div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -139,10 +112,8 @@ const Home = (props: any) => {
 };
 export default Home;
 
-// export async function getStaticProps(context: any) {
-//   return {
-//     // props: {
-//     //   light: context.light,
-//     // }, // will be passed to the page component as props
-//   };
-// }
+export const getServerSideProps = async () => {
+  const projectImg = await prisma.projectImg.findMany({});
+
+  return { props: { projectImg } };
+};
