@@ -12,6 +12,8 @@ model Post {
   title String  @db.VarChar(150)
   body  String? @db.Text
   imgs  PostImg[]
+
+  @@map(name: "post")
 }
 
 model Project {
@@ -38,4 +40,6 @@ model PostImg {
   parentId Int
   parent Post @relation(fields: [parentId], references: [id])
   location String  @db.VarChar(150)
+
+  @@map(name: "postImg")
 }

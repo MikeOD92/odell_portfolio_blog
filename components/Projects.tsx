@@ -3,58 +3,42 @@ import Image from "next/image";
 
 export default function Projects(props: any) {
   const light = props.light;
-  console.log("look at the posts");
-  console.log(props.posts[0]);
+
   return (
     <div className="flex flex-col w-2/3 mt-20">
-      {/* this will be a loop and its own compoennet.  */}
-      <div
-        className={`h-full my-2 border-2 m-1 ${
-          light ? "border-black" : "border-white"
-        }`}
-      >
-        <div
-          className={`p-5 round-md h-full ${
-            light ? "text-black bg-zinc-100" : "bg-black"
-          }`}
-        >
-          <h3 className="displaytxt text-4xl mb-2 ">
-            {/* Random Man Editions - Randomman.net */}
-            {props.posts[0].title}
-          </h3>
-          {/* should be a multi img */}
+      {props.posts?.map((post: any, i: Number) => {
+        // i should make types for these.
+        return (
+          <div
+            key={`post${i}`}
+            className={`h-full my-2 border-2 m-1 ${
+              light ? "border-black" : "border-white"
+            }`}
+          >
+            <div
+              className={`p-5 round-md h-full ${
+                light ? "text-black bg-zinc-100" : "bg-black"
+              }`}
+            >
+              <h3 className="displaytxt text-4xl mb-2 ">{post.title}</h3>
 
-          <Image
-            src={props.posts[0].imgs[0].location}
-            width="2000"
-            height="2000"
-            alt="portfolio image of randomman.net"
-            className="w-full mb-5"
-          />
+              {/* should be a multi img 
+              maybe as we build this out we want to make a stand along componenet */}
 
-          <p className="">
-            {props.posts[0].des}
-            {/* randomman.net - E-commerce site for NYC art book publisher, built
-            with React, TailwindCSS, Redux, Django, and postgreSQL */}
-          </p>
-          <br />
-          <p>
-            {props.posts[0].body}
-            {/* {" "}
-            Site visitors are able to view and purchase publications. Checkout
-            is facilitated by PayPal. Customers receive an automated
-            confirmation email on purchase and later a shipping notification
-            with a tracking number provided by the store. Staff users have crud
-            functionality with publications, media, orders and the text and
-            links in the about and contact pages. */}
-          </p>
-        </div>
-      </div>
-      <div
-        className={`h-full w-100 border-2 m-1 ${
-          light ? "border-black" : "border-white"
-        }`}
-      ></div>
+              <Image
+                src={post.imgs[0].location}
+                width="2000"
+                height="2000"
+                alt={`portfolio image of ${post.title}`}
+                className="w-full mb-5"
+              />
+              <p>{post.des}</p>
+              <br />
+              <p>{post.body}</p>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
