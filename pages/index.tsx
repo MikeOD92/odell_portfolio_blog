@@ -1,13 +1,15 @@
-import Image from "next/image";
 import react, { useState } from "react";
 import Link from "next/link";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { prisma } from "./api/db";
+import HomePageProjectCard from "@/components/HomePageProjectCard";
+import HomePageBlogCard from "@/components/HomePageBlogCard";
 
 const Home = (props: any) => {
   let light = props.light;
   const { scrollY } = useScroll();
   const [startAnimation, setStartAnimation] = useState(false);
+  console.log(props);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 100 && startAnimation !== true) {
@@ -69,6 +71,11 @@ const Home = (props: any) => {
               Blog
             </h3>
           </Link>
+          <div className="overflow-auto scrollDisplay">
+            {props.posts.map((post: any, i: Number) => {
+              return <HomePageBlogCard key={`blog post ${i}`} post={post} />;
+            })}
+          </div>
         </div>
         <div className="text-5xl text-center p-5 w-full flex flex-col justify-between items-center">
           <Link href="/portfolio" className="w-full">
@@ -86,23 +93,7 @@ const Home = (props: any) => {
           </Link>
           <div className="overflow-auto scrollDisplay">
             {props.projectImg.map((img: any, i: Number) => {
-              return (
-                <Link key={`img ${i}`} href="/portfolio" className="w-full">
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ type: "easeIn", duration: 1.3 }}
-                  >
-                    <Image
-                      src={img.location}
-                      width="2000"
-                      height="2000"
-                      alt="portfolio screenshot of website"
-                      className="w-full mb-5"
-                    />
-                  </motion.div>
-                </Link>
-              );
+              return <HomePageProjectCard key={`img ${i}`} img={img} />;
             })}
           </div>
         </div>
@@ -114,6 +105,7 @@ export default Home;
 
 export const getServerSideProps = async () => {
   const projectImg = await prisma.projectImg.findMany({});
+  const posts = await prisma.post.findMany({});
 
-  return { props: { projectImg } };
+  return { props: { projectImg, posts } };
 };
