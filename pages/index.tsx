@@ -77,7 +77,7 @@ const Home = (props: any) => {
             })}
           </div>
         </div>
-        <div className="text-5xl text-center p-5 w-full flex flex-col justify-between items-center">
+        <div className="text-5xl text-center p-5 w-full h-full flex flex-col justify-between items-center">
           <Link href="/portfolio" className="w-full">
             <h3
               className={`titletxt border-2 ${
@@ -104,8 +104,12 @@ const Home = (props: any) => {
 export default Home;
 
 export const getServerSideProps = async () => {
-  const projectImg = await prisma.projectImg.findMany({});
-  const posts = await prisma.post.findMany({});
+  const projectImg = (await prisma.projectImg.findMany({})).reverse();
+  const posts = (
+    await prisma.post.findMany({
+      include: { imgs: true },
+    })
+  ).reverse();
 
   return { props: { projectImg, posts } };
 };
