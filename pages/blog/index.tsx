@@ -43,7 +43,11 @@ export default function App(props: any) {
       </div>
       <div className="flex flex-row p-5 pt-24 h-screen">
         <div className="w-1/2 flex flex-col">
-          <div className="h-2/3 mb-5 p-5 bg-[url(/img/moss.jpg)] bg-cover">
+          <div
+            className={`h-2/3 mb-5 p-5 bg-[url(/img/moss.jpg)] bg-cover border-2 ${
+              props.light ? "border-black" : "border-white"
+            }`}
+          >
             <h2 className={`text-7xl displaytxt text-white mb-3`}>Title</h2>
             <h4 className={`text-4xl titletxt text-white text-center`}>
               Blog Description Blurp
