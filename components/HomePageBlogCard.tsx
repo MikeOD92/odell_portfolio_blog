@@ -4,9 +4,15 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function HomePageBlogCard(props: any) {
-  console.log("////// props in blog card", props);
+  // console.log("////// props in blog card", props);
   return (
-    <div className="p-5 border-2 my-3 border-white hover:bg-lime-500">
+    <div
+      className={`p-5 border-2 my-3 ${
+        props.light
+          ? "text-black border-black bg-white hover:bg-black hover:text-white"
+          : "text-white border-white bg-black hover:bg-white hover:text-black"
+      }`}
+    >
       <Link href={`/blog/${props.post.id}`} className="flex flex-row p-3">
         <Image
           src={props.post.imgs[0].location}

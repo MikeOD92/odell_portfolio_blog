@@ -34,12 +34,10 @@ export default function BlogPost(props: any) {
             width={400}
             quality={100}
             alt="blog post splash image"
-            // className="pt-20"
           />
         </div>
         <div className="w-1/2 pt-10">
           <h1 className="text-7xl displaytxt">{props.post.title}</h1>
-          {/* <p>{props.post.desc}</p> */}
         </div>
       </div>
 

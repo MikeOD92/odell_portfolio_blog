@@ -73,7 +73,13 @@ const Home = (props: any) => {
           </Link>
           <div className="overflow-auto scrollDisplay">
             {props.posts.map((post: any, i: Number) => {
-              return <HomePageBlogCard key={`blog post ${i}`} post={post} />;
+              return (
+                <HomePageBlogCard
+                  key={`blog post ${i}`}
+                  post={post}
+                  light={light}
+                />
+              );
             })}
           </div>
         </div>
