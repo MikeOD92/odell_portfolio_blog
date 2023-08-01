@@ -35,29 +35,38 @@ export default function App(props: any) {
       <div className="flex flex-row p-5 pt-24 h-screen">
         <div className="w-1/2 flex flex-col">
           <div
-            className={`h-2/3 mb-5 p-5 bg-[url(/img/moss.jpg)] bg-cover border-2 ${
+            className={`h-2/3 mb-5 p-5 bg-[url(/img/fence.jpg)] bg-cover border-2 ${
               props.light ? "border-black" : "border-white"
             }`}
           >
             <h2 className={`text-7xl displaytxt text-white mb-3`}>
-              O'Dell's Linux and Tech Blog
+              O&apos;Dell&apos;s Linux and Tech Blog
             </h2>
-            <h4 className={`text-4xl titletxt text-white text-center`}>
-              Blog Description Blurp
-            </h4>
+            {/* <h4 className={`text-4xl titletxt text-white text-center`}>
+              
+            </h4> */}
           </div>
           <div
             className={`h-1/3 border-2 ${
               props.light ? "border-black" : "border-white"
-            } p-5`}
+            } p-5 flex flex-row justify-between items-center`}
           >
             <h4
-              className={`text-3xl titletxt ${
+              className={`text-5xl titletxt ${
                 props.light ? "text-black" : "text-white"
               }`}
             >
-              Perment Link to Inital Post, About me etc...
+              About Me
             </h4>
+            <div>
+              <Image
+                src="/img/odell.jpg"
+                alt="author portait"
+                width={150}
+                height={150}
+                className="rounded-full object-contain"
+              />
+            </div>
           </div>
         </div>
         <div className="w-1/2 h-full flex flex-col ml-3">
@@ -71,7 +80,7 @@ export default function App(props: any) {
               <h3
                 className={`${
                   props.light ? "text-black" : "text-white"
-                } text-4xl titletxt`}
+                } text-4xl titletxt m-2`}
               >
                 {props.posts[0].title}
               </h3>
@@ -118,6 +127,12 @@ export default function App(props: any) {
             >
               {props.posts[2].title}
             </h3>
+            <Image
+              src={props.posts[1].imgs[0].location}
+              height={200}
+              width={200}
+              alt="blogimg"
+            />
           </Link>
         </div>
       </div>
