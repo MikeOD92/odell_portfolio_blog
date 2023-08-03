@@ -4,6 +4,7 @@ import { prisma } from "../api/db";
 import { Gi3DStairs } from "react-icons/gi";
 import Link from "next/link";
 import Image from "next/image";
+import BlogIndexCard from "@/components/BlogIndexCard";
 
 export default function App(props: any) {
   return (
@@ -11,7 +12,7 @@ export default function App(props: any) {
       <div
         className={`fixed w-full pt-5 pl-20 ${
           props.light
-            ? "bg-gradient-to-b from-zinc-100 to-zinc-300 border-2 border-b-black"
+            ? "bg-zinc-200 border-2 border-b-black"
             : "bg-black border-b-2 border-b-white"
         }`}
       >
@@ -35,131 +36,67 @@ export default function App(props: any) {
       <div className="flex flex-row p-5 pt-24 h-screen">
         <div className="w-1/2 flex flex-col">
           <div
-            className={`h-2/3 mb-5 p-5 bg-[url(/img/fence.jpg)] bg-cover border-2 ${
+            className={`h-2/3 mb-5 p-5 bg-[url(/img/rocks2.jpg)] bg-cover border-2 text-white ${
               props.light ? "border-black" : "border-white"
             }`}
           >
-            <h2 className={`text-7xl displaytxt text-white mb-3`}>
-              O&apos;Dell&apos;s Linux and Tech Blog
+            <h2 className={`text-7xl displaytxt  mb-3`}>
+              <span className="titletxt"> O&apos;Dell&apos;s</span> Linux and
+              Tech Blog
             </h2>
-            {/* <h4 className={`text-4xl titletxt text-white text-center`}>
-              
-            </h4> */}
           </div>
-          <div
+          <Link
+            href="/blog/about"
             className={`h-1/3 border-2 ${
-              props.light ? "border-black" : "border-white"
+              props.light
+                ? "bg-none border-black hover:bg-black hover:border-white text-black hover:text-white"
+                : "bg-black border-white hover:bg-white hover:border-black text-white hover:text-black"
             } p-5 flex flex-row justify-between items-center`}
           >
-            <h4
-              className={`text-5xl titletxt ${
-                props.light ? "text-black" : "text-white"
-              }`}
-            >
-              About Me
-            </h4>
+            <h4 className="text-5xl titletxt">Hello_World</h4>
             <div>
               <Image
                 src="/img/odell.jpg"
                 alt="author portait"
                 width={150}
                 height={150}
-                className="rounded-full object-contain"
+                className={`rounded-full object-contain border-2 ${
+                  props.light ? "border-black" : "border-white"
+                }`}
               />
             </div>
-          </div>
+          </Link>
         </div>
         <div className="w-1/2 h-full flex flex-col ml-3">
-          <div className="flex flex-row h-1/2 mb-3">
-            <Link
-              className={`w-1/2 border-2 ${
-                props.light ? "border-black" : "border-white"
-              } mb-2 ml-3 p-5`}
-              href={`/blog/${props.posts[0].id}`}
-            >
-              <h3
-                className={`${
-                  props.light ? "text-black" : "text-white"
-                } text-4xl titletxt m-2`}
-              >
-                {props.posts[0].title}
-              </h3>
-              <Image
-                src={props.posts[0].imgs[0].location}
-                height={200}
-                width={200}
-                alt="blogimg"
-              />
-            </Link>
-
-            <Link
-              className={`w-1/2 border-2 ${
-                props.light ? "border-black" : "border-white"
-              } mb-2 ml-3 p-5`}
-              href={`/blog/${props.posts[1].id}`}
-            >
-              <h3
-                className={`${
-                  props.light ? "text-black" : "text-white"
-                } text-4xl titletxt`}
-              >
-                {props.posts[1].title}
-              </h3>
-              <Image
-                src={props.posts[1].imgs[0].location}
-                height={200}
-                width={200}
-                alt="blogimg"
-              />
-            </Link>
-          </div>
-
-          <Link
-            className={`h-1/2 border-2 ${
-              props.light ? "border-black" : "border-white"
-            } ml-3 p-5`}
-            href={`/blog/${props.posts[2].id}`}
-          >
-            <h3
-              className={`${
-                props.light ? "text-black" : "text-white"
-              } text-4xl titletxt`}
-            >
-              {props.posts[2].title}
-            </h3>
-            <Image
-              src={props.posts[1].imgs[0].location}
-              height={200}
-              width={200}
-              alt="blogimg"
+          <div className="flex flex-row h-1/2 mb-5">
+            <BlogIndexCard
+              post={props.posts[0]}
+              width={"w-1/2"}
+              light={props.light}
             />
-          </Link>
+            <BlogIndexCard
+              post={props.posts[1]}
+              width={"w-1/2"}
+              light={props.light}
+            />
+          </div>
+          <BlogIndexCard
+            post={props.posts[2]}
+            width={"w-100"}
+            height={"h-full"}
+            light={props.light}
+          />
         </div>
       </div>
       <div className="h-screen p-3 mt-10 mx-2 grid grid-cols-4 grid-rows-2 gap-5">
         {props.posts.slice(3).map((itm: any, i: number) => {
           return (
-            <Link
-              key={`${itm.title} ${i}`}
-              href={`/blog/${itm.id}`}
-              className={`h-full border-2 ${
-                props.light ? "border-black" : "border-white"
-              } ml-3 p-5`}
-            >
-              <h3
-                className={`text-4xl px-3 pb-3 text-center ${
-                  props.light ? "text-black" : "text-white"
-                } titletxt`}
-              >
-                {itm.title}
-              </h3>
-              <Image
-                src={itm.imgs[0].location}
-                height={200}
-                width={200}
-                alt="blogimg"
-              />
-            </Link>
+            <BlogIndexCard
+              post={itm}
+              width="w-100"
+              key={`blogPost${i}`}
+              light={props.light}
+            />
           );
         })}
       </div>
