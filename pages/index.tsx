@@ -59,9 +59,7 @@ const Home = (props: any) => {
           <Link href="/blog" className="">
             <h3
               className={`titletxt w-full border-2 ${
-                light
-                  ? "text-black border-black"
-                  : " text-white border-zinc-200"
+                light ? "text-black border-black" : "text-white border-zinc-200"
               } ${
                 light
                   ? "hover:bg-black hover:text-white"

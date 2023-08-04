@@ -7,8 +7,8 @@ export default function BlogIndexCard(props: any) {
     <Link
       className={`${props.width} ${props.height ? props.height : ""} border-2 ${
         props.light
-          ? "bg-none border-black hover:bg-black hover:border-white text-black hover:text-white"
-          : "bg-black border-white hover:bg-white hover:border-black text-white hover:text-black"
+          ? "bg-none border-black hover:border-yellow-600  text-black "
+          : "bg-black border-white  hover:border-[#4c483e] text-white"
       } ml-3 p-5`}
       href={`/blog/${props.post.id}`}
     >

@@ -4,14 +4,14 @@ import Image from "next/image";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { prisma } from "../api/db";
 import { Gi3DStairs } from "react-icons/gi";
-
+import { TfiBackLeft } from "react-icons/tfi";
 export default function about(props: any) {
   return (
     <div>
       <div
         className={`fixed w-full py-2 pl-20 ${
           props.light
-            ? "bg-gradient-to-b from-zinc-100 to-zinc-300 border-2 border-b-black"
+            ? "bg-zinc-300 border-2 border-b-black"
             : "bg-black border-b-2 border-b-white"
         }`}
       >
@@ -22,21 +22,28 @@ export default function about(props: any) {
         >
           <Link
             href="/blog"
-            className={`mr-3 p-2 border-2 self-center ${
+            className={`mr-3 p-2 self-center  
+            ${
               props.light
-                ? "bg-none border-black hover:bg-black hover:border-white text-black hover:text-white"
-                : "bg-black border-white hover:bg-white hover:border-black text-white hover:text-black"
+                ? "bg-none hover:bg-black hover:border-white text-black hover:text-white"
+                : "bg-black hover:bg-white hover:border-black text-white hover:text-black"
+            }
+            `}
+          >
+            <TfiBackLeft className={`text-4xl `} />
+          </Link>
+          <Link
+            href="/"
+            className={`text-5xl mb-2 ${
+              props.light ? "hover:text-blue-400" : "hover:text-lime-400"
             }`}
           >
-            Back
-          </Link>
-          <Link href="/" className={`text-5xl mb-2`}>
             <Gi3DStairs />
           </Link>
         </div>
       </div>
       <div
-        className={`h-screen w-full p-10 pt-24 ${
+        className={`h-full w-full p-10 pt-24 ${
           props.light ? "text-black" : "text-white"
         }`}
       >
@@ -54,14 +61,17 @@ export default function about(props: any) {
           />
         </div>
         <div
-          className={`p-5 border-2 ${
-            props.light ? "border-black" : "border-white"
-          } text-md`}
+          className={`p-20  text-md ${
+            props.light
+              ? "text-slate-700 bg-zinc-200"
+              : "text-zinc-200 bg-[#4c483e]"
+          } rounded-r-2xl mb-5`}
         >
-          <p>
+          <h2 className="text-2xl">
             Hello, welcome to my yet unnamed blog and thank you for clicking on
             the about me post.
-          </p>
+          </h2>
+          <br />
           <br />
           <p>
             My name is O&apos;Dell and I am a web developer, Linux enthusiast,
@@ -69,26 +79,26 @@ export default function about(props: any) {
             and I love making things. I have a background in the arts and
             achieved my BFA from CUNY Hunter College in NYC in 2015 with a focus
             in video and sculpture. After this I spent a good 5 months hiking
-            the 2650 mile Pacific Crest Trail from Mexico to Canada and in 2018
-            I hit the trails again to hike the Pacific Northwest Trail 1200
-            miles from the Montana Rockies to the Washington coast. I settled in
-            Seattle for a few years and during the Covid19 pandemic from October
-            20&apos; - April 21&apos; attended General Assembly&apos;s Software
-            Engineering Immersive bootcamp. During this time and since I&apos;ve
-            dove head first into web development and linux and will be sharing
-            my self guided learning journey here.
+            the 2650 mile Pacific Crest Trail from Mexico to Canada, in 2018 I
+            hit the trails again to hike the Pacific Northwest Trail, 1200 miles
+            from the Montana Rockies to the Washington coast. I settled in
+            Seattle for a few years and during the Covid 19 pandemic from
+            October 20&apos; - April 21&apos; attended General Assembly&apos;s
+            Software Engineering Immersive bootcamp. During this time and since
+            I&apos;ve dove head first into web development and linux and will be
+            sharing my self guided learning journey here.
           </p>
           <br />
           <p>
-            The focus of this blog will be tech and tech related topics as I
-            learn and explore new things I will be writing about things that
-            interest me and creating tutorials. I&apos;ll be taking about things
-            like software packages I&apos;m using, developing with NextJS,
-            Python programing, I&apos;ll do some Linux distro reviews, I&apos;ll
-            do an in-depth Arch install tutorial, and I&apos;ll talk about
-            running web servers and other services on linux machines. I will
-            mostly use RedHat CentOS and maybe NixOS for running services and
-            focus on Arch based distros for going into gaming and running a
+            The focus of this blog will be on tech and tech related topics as I
+            learn and explore new things. I will be writing about my projects,
+            things that interest me and creating tutorials. I&apos;ll be taking
+            about things like software packages I&apos;m using, developing with
+            NextJS, Python programing, I&apos;ll do some Linux distro reviews,
+            I&apos;ll do an in-depth Arch install tutorial, and I&apos;ll talk
+            about running web servers and other services on linux machines. I
+            will mostly use RedHat CentOS and maybe NixOS for running services
+            and focus on Arch based distros for going into gaming and running a
             daily driver / development environment.
           </p>
           <br />
