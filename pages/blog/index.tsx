@@ -33,7 +33,7 @@ export default function App(props: any) {
           </Link>
         </div>
       </div>
-      <div className="flex flex-row p-5 pt-24 h-screen">
+      <div className="flex flex-row p-5 pt-24 h-screen box-border">
         <div className="w-1/2 flex flex-col">
           <div
             className={`h-2/3 mb-5 bg-[url(/img/circutboard.jpg)] bg-cover border-2 text-white ${
@@ -69,25 +69,28 @@ export default function App(props: any) {
             </div>
           </Link>
         </div>
-        <div className="w-1/2 h-full flex flex-col ml-3">
+        <div className="w-1/2 flex flex-col ml-3">
           <div className="flex flex-row h-1/2 mb-5">
+            {/* //grid grid-cols-2 gap-2 mb-5 h-1/2 */}
             <BlogIndexCard
               post={props.posts[0]}
-              width={"w-1/2"}
+              width={"w-full"}
               light={props.light}
             />
             <BlogIndexCard
               post={props.posts[1]}
-              width={"w-1/2"}
+              width={"w-full"}
               light={props.light}
             />
           </div>
+          {/* <div className="h-1/3"> */}
           <BlogIndexCard
             post={props.posts[2]}
             width={"w-100"}
-            height={"h-full"}
+            height={"h-1/2"}
             light={props.light}
           />
+          {/* </div> */}
         </div>
       </div>
       <div className="h-screen p-3 mt-10 mx-2 grid grid-cols-4 grid-rows-2 gap-5">
