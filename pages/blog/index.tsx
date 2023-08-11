@@ -36,12 +36,12 @@ export default function App(props: any) {
       <div className="flex flex-row p-5 pt-24 h-screen box-border">
         <div className="w-1/2 flex flex-col">
           <div
-            className={`h-2/3 mb-5 bg-[url(/img/circutboard.jpg)] bg-cover border-2 text-white ${
+            className={`h-2/3 mb-5 border-2 text-white ${
               props.light ? "border-black" : "border-white"
             }`}
           >
             <h2
-              className={`text-7xl displaytxt w-full h-full  text-lime-400 bg-gradient-to-b from-black/50 to-transparent p-10  mb-3`}
+              className={`text-7xl displaytxt w-full h-full  text-white bg-gradient-to-b from-black/50 to-transparent p-10  mb-3`}
             >
               <span className="titletxt"> O&apos;Dell&apos;s</span> <br />
               Linux and Web Development Blog
@@ -51,11 +51,16 @@ export default function App(props: any) {
             href="/blog/about"
             className={`h-1/3 border-2 ${
               props.light
-                ? "bg-none border-black hover:border-yellow-600 text-black"
-                : "bg-black border-white   hover:border-[#4c483e] text-white "
+                ? "border-black hover:border-zinc-400 text-black"
+                : "border-white   hover:border-[#4c483e] text-white "
             } p-5 flex flex-row justify-between items-center`}
+            // style={{
+            //   background: "url(/img/lichen.jpg)",
+            //   backgroundPosition: "top left",
+            //   backgroundSize: "160%",
+            // }}
           >
-            <h4 className="text-5xl titletxt">Hello_World</h4>
+            <h4 className="text-5xl p-5 titletxt">Hello_World</h4>
             <div>
               <Image
                 src="/img/odell.jpg"
@@ -63,7 +68,7 @@ export default function App(props: any) {
                 width={150}
                 height={150}
                 className={`rounded-full object-contain border-2 ${
-                  props.light ? "border-black" : "border-white"
+                  props.light ? "border-black" : "border-[#4c483e]"
                 }`}
               />
             </div>
@@ -72,7 +77,7 @@ export default function App(props: any) {
         <div className="w-1/2 flex flex-col ml-3">
           <div className="flex flex-row h-1/2 mb-5">
             {/* //grid grid-cols-2 gap-2 mb-5 h-1/2 */}
-            <BlogIndexCard
+            {/* <BlogIndexCard
               post={props.posts[0]}
               width={"w-full"}
               light={props.light}
@@ -81,24 +86,24 @@ export default function App(props: any) {
               post={props.posts[1]}
               width={"w-full"}
               light={props.light}
-            />
+            /> */}
           </div>
-          {/* <div className="h-1/3"> */}
-          <BlogIndexCard
-            post={props.posts[2]}
-            width={"w-100"}
-            height={"h-1/2"}
-            light={props.light}
-          />
-          {/* </div> */}
+          <div className="h-1/3">
+            {/* <BlogIndexCard
+              post={props.posts[2]}
+              width={"w-100"}
+              height={"h-full"}
+              light={props.light}
+            /> */}
+          </div>
         </div>
       </div>
       <div className="h-screen p-3 mt-10 mx-2 grid grid-cols-4 grid-rows-2 gap-5">
-        {props.posts.slice(3).map((itm: any, i: number) => {
+        {props.posts.map((itm: any, i: number) => {
           return (
             <BlogIndexCard
               post={itm}
-              width="w-100"
+              width="w-full"
               key={`blogPost${i}`}
               light={props.light}
             />
@@ -110,7 +115,10 @@ export default function App(props: any) {
 }
 export const getServerSideProps = async () => {
   const posts = await prisma.post.findMany({
-    include: { imgs: true },
+    include: {
+      imgs: true,
+      tags: { select: { tagName: true } },
+    },
   });
   posts.reverse();
 

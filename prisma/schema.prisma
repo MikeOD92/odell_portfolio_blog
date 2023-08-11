@@ -12,6 +12,7 @@ model Post {
   title String  @db.VarChar(150)
   body  String? @db.Text
   imgs  PostImg[]
+  tags TagsOnPosts[]
 
   @@map(name: "post")
 }
@@ -42,4 +43,22 @@ model PostImg {
   location String  @db.VarChar(150)
 
   @@map(name: "postImg")
+}
+
+model Tag {
+  id Int @id @default(autoincrement()) 
+  tag String  @db.VarChar(150) 
+  posts TagsOnPosts[]
+  
+  @@unique([id, tag])
+  @@map(name: "tag")
+}
+
+model TagsOnPosts {
+  post Post @relation(fields: [postId], references: [id])
+  postId Int
+  tag Tag @relation(fields: [tagId, tagName], references: [id, tag])
+  tagId Int
+  tagName String 
+  @@id([postId, tagId])
 }

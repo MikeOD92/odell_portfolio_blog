@@ -3,35 +3,30 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function BlogIndexCard(props: any) {
+  console.log(`BlogIndexCard Props`, props);
   return (
-    <Link
-      className={`${props.width} ${props.height} border-2 ${
+    <div
+      className={`${props.width} ${props.height}  border-2 ${
         props.light
-          ? "bg-none border-black hover:border-yellow-600  text-black "
-          : "bg-black border-white  hover:border-[#4c483e] text-white"
+          ? `bg-none border-black hover:border-zinc-400  text-black`
+          : "bg-none border-white  hover:border-[#4c483e] text-white"
       } ml-3`}
-      href={`/blog/${props.post.id}`}
+      style={{
+        background: `url(${props.post.imgs[0].location}`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
     >
-      <div className={`p-2 ${props.light ? "bg-zinc-300" : "bg-[#4c483e]"}`}>
-        <h3 className="text-4xl titletxt m-2">{props.post.title}</h3>
-      </div>
-      {/* <div
-        className="relative"
-        // style={
-        //   props
-        //     ? {
-        //         background: `url(${props.post.imgs[0].location}`,
-        //       }
-        //     : {}
-        // }
-      > */}
-      <Image
-        src={props.post.imgs[0].location}
-        height={200}
-        width={200}
-        alt="blogimg"
-      />
-      {/* </div> */}
-    </Link>
+      <Link href={`/blog/${props.post.id}`}>
+        <h3
+          className={`p-5 h-full w-full ${
+            props.light ? "bg-zinc-200/50" : "bg-[#4c483e]/50"
+          } text-5xl titletxt`}
+        >
+          {props.post.title}
+        </h3>
+      </Link>
+    </div>
   );
 }
