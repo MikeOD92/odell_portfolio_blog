@@ -1,5 +1,5 @@
 import type { AppProps } from "next/app";
-import react, { useState } from "react";
+import react, { useState, useRef } from "react";
 import { prisma } from "../api/db";
 import { Gi3DStairs } from "react-icons/gi";
 import Link from "next/link";
@@ -7,6 +7,7 @@ import Image from "next/image";
 import BlogIndexCard from "@/components/BlogIndexCard";
 
 export default function App(props: any) {
+  const [filter, setFilter] = useState("");
   return (
     <div>
       <div
@@ -21,12 +22,20 @@ export default function App(props: any) {
             props.light ? "text-black" : "text-white"
           } flex flex-row justify-around`}
         >
-          <a className="hoverDisplay">Linux</a>
-          <a className="hoverDisplay">Front End</a>
-          <a className="hoverDisplay">Back End</a>
+          <a className="hoverDisplay" onClick={() => setFilter("Linux")}>
+            Linux
+          </a>
+          <a className="hoverDisplay" onClick={() => setFilter("Frontend")}>
+            Front End
+          </a>
+          <a className="hoverDisplay" onClick={() => setFilter("BackEnd")}>
+            Back End
+          </a>
           <a className="hoverDisplay">Arts & Tech</a>
           <a className="hoverDisplay">Books</a>
-          <a className="hoverDisplay">DIY</a>
+          <a className="hoverDisplay" onClick={() => setFilter("")}>
+            All
+          </a>
 
           <Link href="/" className={`text-5xl mb-2`}>
             <Gi3DStairs />
@@ -99,15 +108,34 @@ export default function App(props: any) {
         </div>
       </div>
       <div className="h-screen p-3 mt-10 mx-2 grid grid-cols-4 grid-rows-2 gap-5">
+        {/* <select
+          ref={filterRef}
+          onChange={() => {
+            if (filterRef.current) console.log(filterRef.current.value);
+          }}
+        >
+          <option value={0}>{""}</option>
+          <option value="Linux">Linux</option>
+          <option value="Frontend">Frontend</option>
+          <option value="Backend">Backend</option>
+        </select> */}
         {props.posts.map((itm: any, i: number) => {
-          return (
-            <BlogIndexCard
-              post={itm}
-              width="w-full"
-              key={`blogPost${i}`}
-              light={props.light}
-            />
-          );
+          if (filter === "") {
+            return (
+              <BlogIndexCard
+                post={itm}
+                width="w-full"
+                key={`blogPost${i}`}
+                light={props.light}
+              />
+            );
+          } else {
+            return (
+              <div key={i}>
+                <h1> ICH BIN DUMB UND DICK</h1>
+              </div>
+            );
+          }
         })}
       </div>
     </div>

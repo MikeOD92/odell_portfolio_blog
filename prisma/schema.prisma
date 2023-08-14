@@ -60,5 +60,5 @@ model TagsOnPosts {
   tag Tag @relation(fields: [tagId, tagName], references: [id, tag])
   tagId Int
   tagName String 
-  @@id([postId, tagId])
+  @@id( tagName)
 }

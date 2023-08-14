@@ -67,6 +67,7 @@ CREATE TABLE `tag` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `tag` VARCHAR(150) NOT NULL,
 
+    UNIQUE INDEX `tag_id_tag_key`(`id`, `tag`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -74,8 +75,9 @@ CREATE TABLE `tag` (
 CREATE TABLE `TagsOnPosts` (
     `postId` INTEGER NOT NULL,
     `tagId` INTEGER NOT NULL,
+    `tagName` VARCHAR(191) NOT NULL,
 
-    PRIMARY KEY (`postId`, `tagId`)
+    PRIMARY KEY (`tagName`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
@@ -88,4 +90,4 @@ ALTER TABLE `postImg` ADD CONSTRAINT `postImg_parentId_fkey` FOREIGN KEY (`paren
 ALTER TABLE `TagsOnPosts` ADD CONSTRAINT `TagsOnPosts_postId_fkey` FOREIGN KEY (`postId`) REFERENCES `post`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `TagsOnPosts` ADD CONSTRAINT `TagsOnPosts_tagId_fkey` FOREIGN KEY (`tagId`) REFERENCES `tag`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `TagsOnPosts` ADD CONSTRAINT `TagsOnPosts_tagId_tagName_fkey` FOREIGN KEY (`tagId`, `tagName`) REFERENCES `tag`(`id`, `tag`) ON DELETE RESTRICT ON UPDATE CASCADE;
