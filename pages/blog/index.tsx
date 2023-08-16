@@ -22,13 +22,13 @@ export default function App(props: any) {
             props.light ? "text-black" : "text-white"
           } flex flex-row justify-around`}
         >
-          <a className="hoverDisplay" onClick={() => setFilter("Linux")}>
+          <a className="hoverDisplay" onClick={() => setFilter("linux")}>
             Linux
           </a>
-          <a className="hoverDisplay" onClick={() => setFilter("Frontend")}>
+          <a className="hoverDisplay" onClick={() => setFilter("frontEnd")}>
             Front End
           </a>
-          <a className="hoverDisplay" onClick={() => setFilter("BackEnd")}>
+          <a className="hoverDisplay" onClick={() => setFilter("backEnd")}>
             Back End
           </a>
           <a className="hoverDisplay">Arts & Tech</a>
@@ -108,35 +108,32 @@ export default function App(props: any) {
         </div>
       </div>
       <div className="h-screen p-3 mt-10 mx-2 grid grid-cols-4 grid-rows-2 gap-5">
-        {/* <select
-          ref={filterRef}
-          onChange={() => {
-            if (filterRef.current) console.log(filterRef.current.value);
-          }}
-        >
-          <option value={0}>{""}</option>
-          <option value="Linux">Linux</option>
-          <option value="Frontend">Frontend</option>
-          <option value="Backend">Backend</option>
-        </select> */}
-        {props.posts.map((itm: any, i: number) => {
-          if (filter === "") {
-            return (
-              <BlogIndexCard
-                post={itm}
-                width="w-full"
-                key={`blogPost${i}`}
-                light={props.light}
-              />
-            );
-          } else {
-            return (
-              <div key={i}>
-                <h1> ICH BIN DUMB UND DICK</h1>
-              </div>
-            );
-          }
-        })}
+        {filter === ""
+          ? props.posts.map((itm: any, i: number) => {
+              return (
+                <BlogIndexCard
+                  post={itm}
+                  width="w-full"
+                  key={`blogPost${i}`}
+                  light={props.light}
+                />
+              );
+            })
+          : props.posts
+              .filter(
+                (post: any) =>
+                  post.tags.find((ele: any) => ele.tag === filter) !== undefined
+              )
+              .map((itm: any, i: number) => {
+                return (
+                  <BlogIndexCard
+                    post={itm}
+                    width="w-full"
+                    key={`blogPost${i}`}
+                    light={props.light}
+                  />
+                );
+              })}
       </div>
     </div>
   );
@@ -145,7 +142,7 @@ export const getServerSideProps = async () => {
   const posts = await prisma.post.findMany({
     include: {
       imgs: true,
-      tags: { select: { tagName: true } },
+      tags: { select: { tag: true } },
     },
   });
   posts.reverse();

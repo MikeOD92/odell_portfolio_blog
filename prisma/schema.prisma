@@ -11,8 +11,8 @@ model Post {
   id    Int     @id @default(autoincrement())
   title String  @db.VarChar(150)
   body  String? @db.Text
-  imgs  PostImg[]
-  tags TagsOnPosts[]
+  imgs PostImg[]
+  tags Tag[]
 
   @@map(name: "post")
 }
@@ -48,17 +48,19 @@ model PostImg {
 model Tag {
   id Int @id @default(autoincrement()) 
   tag String  @db.VarChar(150) 
-  posts TagsOnPosts[]
+  parentId Int
+  posts Post @relation( fields: [parentId], references: [id])
+
   
-  @@unique([id, tag])
+  @@unique([id])
   @@map(name: "tag")
 }
 
-model TagsOnPosts {
-  post Post @relation(fields: [postId], references: [id])
-  postId Int
-  tag Tag @relation(fields: [tagId, tagName], references: [id, tag])
-  tagId Int
-  tagName String 
-  @@id( tagName)
-}
+// model TagsOnPosts {
+//   id Int @id @default(autoincrement()) 
+//   post Post @relation(fields: [postId], references: [id])
+//   postId Int
+//   tag Tag @relation(fields: [tagId], references: [id])
+//   tagId Int
+
+// }
