@@ -3,13 +3,12 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function BlogIndexCard(props: any) {
-  console.log(`BlogIndexCard Props`, props);
   return (
     <div
       className={`${props.width} ${props.height}  border-2 ${
         props.light
-          ? `bg-none border-black hover:border-zinc-400  text-black`
-          : "bg-none border-white  hover:border-[#4c483e] text-white"
+          ? ` border-black hover:border-zinc-400  text-black `
+          : "border-white  hover:border-[#4c483e] text-white"
       } ml-3`}
       style={{
         background: `url(${props.post.imgs[0].location}`,

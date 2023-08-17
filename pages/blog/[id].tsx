@@ -4,15 +4,16 @@ import Image from "next/image";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { prisma } from "../api/db";
 import { Gi3DStairs } from "react-icons/gi";
+import { TfiBackLeft } from "react-icons/tfi";
 
 export default function BlogPost(props: any) {
   console.log(props.post.imgs[0].location);
   return (
     <div>
       <div
-        className={`fixed w-full pt-5 pl-20 ${
+        className={`fixed w-full py-2 pl-20 ${
           props.light
-            ? "bg-gradient-to-b from-zinc-100 to-zinc-300 border-2 border-b-black"
+            ? "bg-zinc-300 border-2 border-b-black"
             : "bg-black border-b-2 border-b-white"
         }`}
       >
@@ -21,7 +22,24 @@ export default function BlogPost(props: any) {
             props.light ? "text-black" : "text-white"
           } flex flex-row justify-end pr-5`}
         >
-          <Link href="/" className={`text-5xl mb-2`}>
+          <Link
+            href="/blog"
+            className={`mr-3 p-2 self-center  
+            ${
+              props.light
+                ? "bg-none hover:bg-black hover:border-white text-black hover:text-white"
+                : "bg-black hover:bg-white hover:border-black text-white hover:text-black"
+            }
+            `}
+          >
+            <TfiBackLeft className={`text-4xl `} />
+          </Link>
+          <Link
+            href="/"
+            className={`text-5xl mb-2 ${
+              props.light ? "hover:text-blue-400" : "hover:text-lime-400"
+            }`}
+          >
             <Gi3DStairs />
           </Link>
         </div>

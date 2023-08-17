@@ -1,5 +1,5 @@
 import type { AppProps } from "next/app";
-import react, { useState, useRef } from "react";
+import react, { useState, useRef, useEffect } from "react";
 import { prisma } from "../api/db";
 import { Gi3DStairs } from "react-icons/gi";
 import Link from "next/link";
@@ -7,7 +7,23 @@ import Image from "next/image";
 import BlogIndexCard from "@/components/BlogIndexCard";
 
 export default function App(props: any) {
+  const posts = props.posts;
   const [filter, setFilter] = useState("");
+  const [showPosts, setShowPosts] = useState(props.posts);
+
+  useEffect(() => {
+    if (filter === "") {
+      setShowPosts(posts);
+    } else {
+      setShowPosts(
+        posts.filter(
+          (post: any) =>
+            post.tags.find((ele: any) => ele.tag === filter) !== undefined
+        )
+      );
+    }
+  }, [filter, posts]);
+
   return (
     <div>
       <div
@@ -31,8 +47,8 @@ export default function App(props: any) {
           <a className="hoverDisplay" onClick={() => setFilter("backEnd")}>
             Back End
           </a>
-          <a className="hoverDisplay">Arts & Tech</a>
-          <a className="hoverDisplay">Books</a>
+          {/* <a className="hoverDisplay">Arts & Tech</a>
+          <a className="hoverDisplay">Books</a> */}
           <a className="hoverDisplay" onClick={() => setFilter("")}>
             All
           </a>
@@ -50,7 +66,11 @@ export default function App(props: any) {
             }`}
           >
             <h2
-              className={`text-7xl displaytxt w-full h-full  text-white bg-gradient-to-b from-black/50 to-transparent p-10  mb-3`}
+              className={`text-7xl displaytxt w-full h-full  text-white ${
+                props.light
+                  ? "bg-gradient-to-b from-black/50 to-transparent"
+                  : "bg-gradient-to-t from-[#4c483e]/80 to-transparent"
+              } p-10  mb-3`}
             >
               <span className="titletxt"> O&apos;Dell&apos;s</span> <br />
               Linux and Web Development Blog
@@ -63,11 +83,6 @@ export default function App(props: any) {
                 ? "border-black hover:border-zinc-400 text-black"
                 : "border-white   hover:border-[#4c483e] text-white "
             } p-5 flex flex-row justify-between items-center`}
-            // style={{
-            //   background: "url(/img/lichen.jpg)",
-            //   backgroundPosition: "top left",
-            //   backgroundSize: "160%",
-            // }}
           >
             <h4 className="text-5xl p-5 titletxt">Hello_World</h4>
             <div>
@@ -85,55 +100,50 @@ export default function App(props: any) {
         </div>
         <div className="w-1/2 flex flex-col ml-3">
           <div className="flex flex-row h-1/2 mb-5">
-            {/* //grid grid-cols-2 gap-2 mb-5 h-1/2 */}
-            {/* <BlogIndexCard
-              post={props.posts[0]}
-              width={"w-full"}
-              light={props.light}
-            />
-            <BlogIndexCard
-              post={props.posts[1]}
-              width={"w-full"}
-              light={props.light}
-            /> */}
+            {showPosts[0] ? (
+              <BlogIndexCard
+                post={showPosts[0]}
+                width={"w-full"}
+                light={props.light}
+              />
+            ) : (
+              ""
+            )}
+            {showPosts[1] ? (
+              <BlogIndexCard
+                post={showPosts[1]}
+                width={"w-full"}
+                light={props.light}
+              />
+            ) : (
+              ""
+            )}
           </div>
-          <div className="h-1/3">
-            {/* <BlogIndexCard
-              post={props.posts[2]}
-              width={"w-100"}
-              height={"h-full"}
-              light={props.light}
-            /> */}
-          </div>
+          {showPosts[2] ? (
+            <div className="h-1/2">
+              <BlogIndexCard
+                post={showPosts[2]}
+                width={"w-100"}
+                height={"h-full"}
+                light={props.light}
+              />
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
       <div className="h-screen p-3 mt-10 mx-2 grid grid-cols-4 grid-rows-2 gap-5">
-        {filter === ""
-          ? props.posts.map((itm: any, i: number) => {
-              return (
-                <BlogIndexCard
-                  post={itm}
-                  width="w-full"
-                  key={`blogPost${i}`}
-                  light={props.light}
-                />
-              );
-            })
-          : props.posts
-              .filter(
-                (post: any) =>
-                  post.tags.find((ele: any) => ele.tag === filter) !== undefined
-              )
-              .map((itm: any, i: number) => {
-                return (
-                  <BlogIndexCard
-                    post={itm}
-                    width="w-full"
-                    key={`blogPost${i}`}
-                    light={props.light}
-                  />
-                );
-              })}
+        {showPosts.slice(3).map((itm: any, i: number) => {
+          return (
+            <BlogIndexCard
+              post={itm}
+              width="w-full"
+              key={`blogPost${i}`}
+              light={props.light}
+            />
+          );
+        })}
       </div>
     </div>
   );
