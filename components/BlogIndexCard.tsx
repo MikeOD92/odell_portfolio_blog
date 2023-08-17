@@ -5,22 +5,22 @@ import Image from "next/image";
 export default function BlogIndexCard(props: any) {
   return (
     <div
-      className={`${props.width} ${props.height}  border-2 ${
-        props.light
-          ? ` border-black hover:border-zinc-400  text-black `
-          : "border-white  hover:border-[#4c483e] text-white"
+      className={`${props.width} ${props.height}  border-2 text-white ${
+        props.light ? "border-black " : "border-white"
       } ml-3`}
       style={{
-        background: `url(${props.post.imgs[0].location}`,
+        backgroundImage: `url(${props.post.imgs[0].location}`,
         backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
+        // backgroundPosition: "center",
+        // backgroundRepeat: "no-repeat",
       }}
     >
       <Link href={`/blog/${props.post.id}`}>
         <h3
-          className={`p-5 h-full w-full ${
-            props.light ? "bg-zinc-200/50" : "bg-[#4c483e]/50"
+          className={`p-5 h-full w-full   ${
+            props.light
+              ? "bg-black/30 hover:bg-black/50 "
+              : "bg-black/50 hover:bg-black/20"
           } text-5xl titletxt`}
         >
           {props.post.title}

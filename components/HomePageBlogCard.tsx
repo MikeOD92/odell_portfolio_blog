@@ -6,23 +6,31 @@ import Image from "next/image";
 export default function HomePageBlogCard(props: any) {
   // console.log("////// props in blog card", props);
   return (
-    <div
-      className={`p-5 border-2 my-3 ${
-        props.light
-          ? "text-black border-black bg-white hover:bg-black hover:text-white"
-          : "text-white border-white bg-black hover:bg-white hover:text-black"
-      }`}
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ type: "easeIn", duration: 1.3 }}
     >
-      <Link href={`/blog/${props.post.id}`} className="flex flex-row p-3">
-        <Image
-          src={props.post.imgs[0].location}
-          height={100}
-          width={200}
-          alt="blog post img"
-          className="p-3"
-        />
-        <h1 className="text-center p-3">{props.post.title}</h1>
-      </Link>
-    </div>
+      <div
+        className={`mb-3 text-white bg-black`}
+        style={{
+          backgroundImage: `url(${props.post.imgs[0].location})`,
+          backgroundPosition: "top",
+          backgroundSize: "cover",
+        }}
+      >
+        <Link href={`/blog/${props.post.id}`}>
+          <h1
+            className={`text-center h-fill w-fill ${
+              props.light
+                ? "bg-black/20 hover:bg-black/50 "
+                : "bg-black/50 hover:bg-black/20"
+            } p-10`}
+          >
+            {props.post.title}
+          </h1>
+        </Link>
+      </div>
+    </motion.div>
   );
 }

@@ -46,7 +46,7 @@ export default function Skills(props: any) {
     <div id="skills">
       <div>
         <div
-          className={`p-2 my-2 ${
+          className={`px-2 my-2 ${
             light
               ? " border-2 border-black border-black text-black"
               : " border-2 border-white border-white text-white"

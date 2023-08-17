@@ -38,17 +38,38 @@ export default function App(props: any) {
             props.light ? "text-black" : "text-white"
           } flex flex-row justify-around`}
         >
-          <a className="hoverDisplay" onClick={() => setFilter("linux")}>
+          <a
+            className={`hoverDisplay ${
+              filter === "linux" ? "underline decoration-2" : ""
+            }`}
+            onClick={() => setFilter("linux")}
+          >
             Linux
           </a>
-          <a className="hoverDisplay" onClick={() => setFilter("frontEnd")}>
+          <a
+            className={`hoverDisplay ${
+              filter === "frontEnd" ? "underline decoration-2" : ""
+            }`}
+            onClick={() => setFilter("frontEnd")}
+          >
             Front End
           </a>
-          <a className="hoverDisplay" onClick={() => setFilter("backEnd")}>
+          <a
+            className={`hoverDisplay ${
+              filter === "backEnd" ? "underline decoration-2" : ""
+            }`}
+            onClick={() => setFilter("backEnd")}
+          >
             Back End
           </a>
-          {/* <a className="hoverDisplay">Arts & Tech</a>
-          <a className="hoverDisplay">Books</a> */}
+          <a
+            className={`hoverDisplay ${
+              filter === "other" ? "underline decoration-2" : ""
+            }`}
+            onClick={() => setFilter("other")}
+          >
+            Other
+          </a>
           <a className="hoverDisplay" onClick={() => setFilter("")}>
             All
           </a>
@@ -58,7 +79,7 @@ export default function App(props: any) {
           </Link>
         </div>
       </div>
-      <div className="flex flex-row p-5 pt-24 h-screen box-border">
+      <div className="flex flex-row px-5 pt-24 h-screen box-border">
         <div className="w-1/2 flex flex-col">
           <div
             className={`h-2/3 mb-5 border-2 text-white ${
@@ -80,8 +101,8 @@ export default function App(props: any) {
             href="/blog/about"
             className={`h-1/3 border-2 ${
               props.light
-                ? "border-black hover:border-zinc-400 text-black"
-                : "border-white   hover:border-[#4c483e] text-white "
+                ? "border-black text-black hover:bg-black/30"
+                : "border-white text-white hover:bg-[#4c483e]/80"
             } p-5 flex flex-row justify-between items-center`}
           >
             <h4 className="text-5xl p-5 titletxt">Hello_World</h4>
@@ -91,8 +112,8 @@ export default function App(props: any) {
                 alt="author portait"
                 width={150}
                 height={150}
-                className={`rounded-full object-contain border-2 ${
-                  props.light ? "border-black" : "border-[#4c483e]"
+                className={`rounded-full object-contain border-2 bg-none ${
+                  props.light ? "border-black " : "border-white "
                 }`}
               />
             </div>
@@ -133,7 +154,7 @@ export default function App(props: any) {
           )}
         </div>
       </div>
-      <div className="h-screen p-3 mt-10 mx-2 grid grid-cols-4 grid-rows-2 gap-5">
+      <div className="h-screen px-2.5 mt-5 grid grid-cols-4 grid-rows-2 gap-5">
         {showPosts.slice(3).map((itm: any, i: number) => {
           return (
             <BlogIndexCard
