@@ -19,6 +19,12 @@ import {
   SiTailwindcss,
   SiAmazonaws,
   SiLinux,
+  SiPowershell,
+  SiMysql,
+  SiRedhat,
+  SiCentos,
+  SiArchlinux,
+  SiGnubash,
 } from "react-icons/si";
 
 import {
@@ -53,7 +59,7 @@ export default function Skills(props: any) {
           }`}
         >
           <h3 className="text-4xl titletxt"> Front End</h3>
-          <div className="flex flex-row flex-wrap justify-between">
+          <div className="flex flex-row flex-wrap justify-evenly">
             <div className="skillsDiv">
               <DiHtml5 />
               <p>HTML5</p>
@@ -112,7 +118,7 @@ export default function Skills(props: any) {
           }`}
         >
           <h3 className="text-4xl titletxt"> Back End </h3>
-          <div className="flex flex-row flex-wrap justify-between">
+          <div className="flex flex-row flex-wrap justify-evenly">
             <div className="skillsDiv">
               <DiPython />
               <p>Python</p>
@@ -146,6 +152,10 @@ export default function Skills(props: any) {
               <p>PostgreSQL</p>
             </div>
             <div className="skillsDiv">
+              <SiMysql />
+              <p>MySQL</p>
+            </div>
+            <div className="skillsDiv">
               <DiMongodb />
               <p>MongoDB</p>
             </div>
@@ -167,7 +177,7 @@ export default function Skills(props: any) {
           }`}
         >
           <h3 className="text-4xl titletxt"> Misc.</h3>
-          <div className="flex flex-row flex-wrap justify-between">
+          <div className="flex flex-row flex-wrap justify-evenly">
             <div className="skillsDiv">
               <SiGit />
               <p>Git</p>
@@ -179,6 +189,26 @@ export default function Skills(props: any) {
             <div className="skillsDiv">
               <SiLinux />
               <p>Linux</p>
+            </div>
+            <div className="skillsDiv">
+              <SiRedhat />
+              <p>Redhat</p>
+            </div>
+            <div className="skillsDiv">
+              <SiCentos />
+              <p>CentOS</p>
+            </div>
+            <div className="skillsDiv">
+              <SiArchlinux />
+              <p>Arch</p>
+            </div>
+            <div className="skillsDiv">
+              <SiPowershell />
+              <p>PowerShell</p>
+            </div>
+            <div className="skillsDiv">
+              <SiGnubash />
+              <p>Bash</p>
             </div>
             <div className="skillsDiv">
               <SiTestinglibrary />
@@ -199,10 +229,6 @@ export default function Skills(props: any) {
             <div className="skillsDiv">
               <SiAdobepremierepro />
               <p>Adobe Premiere Pro</p>
-            </div>
-            <div className="skillsDiv">
-              <SiGimp />
-              <p>Gimp</p>
             </div>
             <div className="skillsDiv">
               <SiBlender />

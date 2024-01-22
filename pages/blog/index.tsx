@@ -90,7 +90,7 @@ export default function App(props: any) {
               className={`text-7xl displaytxt w-full h-full  text-white ${
                 props.light
                   ? "bg-gradient-to-b from-black/50 to-transparent"
-                  : "bg-gradient-to-t from-[#4c483e]/80 to-transparent"
+                  : ""
               } p-10  mb-3`}
             >
               <span className="titletxt"> O&apos;Dell&apos;s</span> <br />
@@ -101,8 +101,8 @@ export default function App(props: any) {
             href="/blog/about"
             className={`h-1/3 border-2 ${
               props.light
-                ? "border-black text-black hover:bg-black/30"
-                : "border-white text-white hover:bg-[#4c483e]/80"
+                ? "border-black text-black hover:bg-gradient-to-b hover:from-black/25 hover:to-transparent"
+                : "border-white text-white hover:bg-gradient-to-t hover:from-[#4c483e]/50 hover:to-transparent"
             } p-5 flex flex-row justify-between items-center`}
           >
             <h4 className="text-5xl p-5 titletxt">Hello_World</h4>

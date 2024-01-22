@@ -7,7 +7,7 @@ import { Gi3DStairs } from "react-icons/gi";
 import { TfiBackLeft } from "react-icons/tfi";
 
 export default function BlogPost(props: any) {
-  console.log(props.post.imgs[0].location);
+  console.log(props.post);
   return (
     <div>
       <div
@@ -44,23 +44,26 @@ export default function BlogPost(props: any) {
           </Link>
         </div>
       </div>
-      <div className="h-full w-screen flex flex-row pt-24">
-        <div className="w-1/2">
+      <div
+        className={`h-full ${
+          props.light ? "bg-zinc-300 text-black" : "bg-black text-white"
+        }`}
+      >
+        <div className="w-screen flex flex-row pt-24">
+          <div className="w-full pt-10 text-center">
+            <h1 className="text-7xl displaytxt">{props.post.title}</h1>
+            <p className="p-5">{props.post.body}</p>
+          </div>
+        </div>
+        <div className="w-full h-1/2 absolute flex justify-items-center">
           <Image
             src={props.post.imgs[0].location}
-            height={400}
-            width={400}
+            fill={true}
+            style={{ objectFit: "contain" }}
             quality={100}
             alt="blog post splash image"
           />
         </div>
-        <div className="w-1/2 pt-10">
-          <h1 className="text-7xl displaytxt">{props.post.title}</h1>
-        </div>
-      </div>
-
-      <div className="p-10 pt-28">
-        <p className="p-5">{props.post.body}</p>
       </div>
     </div>
   );
