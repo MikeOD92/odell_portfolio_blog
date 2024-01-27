@@ -170,13 +170,15 @@ export default function App(props: any) {
   );
 }
 export const getServerSideProps = async () => {
-  const posts = await prisma.post.findMany({
+  let posts = await prisma.post.findMany({
     include: {
       imgs: true,
       tags: { select: { tag: true } },
     },
   });
   posts.reverse();
+
+  posts = JSON.parse(JSON.stringify(posts));
 
   return { props: { posts } };
 };

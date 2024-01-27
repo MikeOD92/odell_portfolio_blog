@@ -5,74 +5,139 @@ import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { prisma } from "../api/db";
 import { Gi3DStairs } from "react-icons/gi";
 import { TfiBackLeft } from "react-icons/tfi";
+import BlogNavBar from "@/components/BlogNavBar";
 
 export default function BlogPost(props: any) {
   console.log(props.post);
   return (
-    <div>
-      <div
-        className={`fixed w-full py-2 pl-20 ${
-          props.light
-            ? "bg-zinc-300 border-2 border-b-black"
-            : "bg-black border-b-2 border-b-white"
-        }`}
-      >
-        <div
-          className={`text-xl ${
-            props.light ? "text-black" : "text-white"
-          } flex flex-row justify-end pr-5`}
-        >
-          <Link
-            href="/blog"
-            className={`mr-3 p-2 self-center  
-            ${
-              props.light
-                ? "bg-none hover:bg-black hover:border-white text-black hover:text-white"
-                : "bg-black hover:bg-white hover:border-black text-white hover:text-black"
-            }
-            `}
-          >
-            <TfiBackLeft className={`text-4xl `} />
-          </Link>
-          <Link
-            href="/"
-            className={`text-5xl mb-2 ${
-              props.light ? "hover:text-blue-400" : "hover:text-lime-400"
-            }`}
-          >
-            <Gi3DStairs />
-          </Link>
-        </div>
+    <div
+      className={`${
+        props.light ? "bg-zinc-300 text-black" : "bg-black text-white"
+      }`}
+    >
+      <BlogNavBar light={props.light} />
+      <div className="w-full pt-24 text-center">
+        <h1 className="text-7xl displaytxt">{props.post.title}</h1>
+        <p className="p-5 text-xl">{props.post.des}</p>
+        <p>{props.post.createdAt}</p>
       </div>
-      <div
-        className={`h-full ${
-          props.light ? "bg-zinc-300 text-black" : "bg-black text-white"
-        }`}
-      >
-        <div className="w-screen flex flex-row pt-24">
-          <div className="w-full pt-10 text-center">
-            <h1 className="text-7xl displaytxt">{props.post.title}</h1>
-            <p className="p-5">{props.post.body}</p>
+      <div className="w-full h-screen relative flex justify-items-center">
+        <Image
+          src={props.post.imgs[0].location}
+          fill={true}
+          style={{ objectFit: "contain" }}
+          quality={100}
+          alt="blog post splash image"
+          className="px-24 mt-5"
+        />
+      </div>
+      <div>
+        <p className="mt-20 mb-10 px-24 text-lg">{props.post.body}</p>
+        {props.post.imgs[1] ? (
+          <div className="w-full h-1/4 relative flex flex-row justify-center px-24">
+            <div className="w-1/3 h-1/4">
+              <Image
+                src={props.post.imgs[1].location}
+                // fill={true}
+                height={300}
+                width={300}
+                style={{ objectFit: "contain" }}
+                quality={100}
+                alt="blog image"
+              />
+            </div>
+            {props.post.body1 ? (
+              <p className="text-lg">{props.post.body1}</p>
+            ) : (
+              " "
+            )}
           </div>
-        </div>
-        <div className="w-full h-1/2 absolute flex justify-items-center">
+        ) : (
+          ""
+        )}
+      </div>
+
+      {props.post.imgs[2] ? (
+        <div className="w-full h-1/4 relative flex justify-items-center">
           <Image
-            src={props.post.imgs[0].location}
+            src={props.post.imgs[2].location}
             fill={true}
             style={{ objectFit: "contain" }}
             quality={100}
-            alt="blog post splash image"
+            alt="blog image"
+            className="px-24"
           />
         </div>
-      </div>
+      ) : (
+        ""
+      )}
+      {props.post.body2 ? (
+        <p className="my-10 px-24 text-lg">{props.post.body2}</p>
+      ) : (
+        " "
+      )}
+      {props.post.imgs[3] ? (
+        <div className="w-full h-1/4 relative flex justify-items-center">
+          <Image
+            src={props.post.imgs[3].location}
+            fill={true}
+            style={{ objectFit: "contain" }}
+            quality={100}
+            alt="blog image"
+            className="px-24"
+          />
+        </div>
+      ) : (
+        ""
+      )}
+      {props.post.body3 ? (
+        <p className="my-10 px-24 text-lg">{props.post.body3}</p>
+      ) : (
+        " "
+      )}
+      {props.post.imgs[4] ? (
+        <div className="w-full h-1/5 relative flex justify-items-center">
+          <Image
+            src={props.post.imgs[4].location}
+            fill={true}
+            style={{ objectFit: "contain" }}
+            quality={100}
+            alt="blog image"
+            className="px-24"
+          />
+        </div>
+      ) : (
+        ""
+      )}
+      {props.post.body4 ? (
+        <p className="my-10 px-24 text-lg">{props.post.body4}</p>
+      ) : (
+        " "
+      )}
+      {props.post.imgs[5] ? (
+        <div className="w-full h-1/3 relative flex justify-items-center">
+          <Image
+            src={props.post.imgs[5].location}
+            fill={true}
+            style={{ objectFit: "contain" }}
+            quality={100}
+            alt="blog image"
+            className="px-24"
+          />
+        </div>
+      ) : (
+        ""
+      )}
     </div>
+    // </div>
+    // </div>
   );
 }
 export const getServerSideProps = async (context: any) => {
-  const post = await prisma.post.findUnique({
+  let post = await prisma.post.findUnique({
     where: { id: parseInt(context.params.id) },
     include: { imgs: true },
   });
-
+  post = JSON.parse(JSON.stringify(post));
   return { props: { post } };
 };

@@ -6,10 +6,11 @@ import HomePageProjectCard from "@/components/HomePageProjectCard";
 import HomePageBlogCard from "@/components/HomePageBlogCard";
 
 const Home = (props: any) => {
+  // console.log(props.post);
   let light = props.light;
   const { scrollY } = useScroll();
   const [startAnimation, setStartAnimation] = useState(false);
-  console.log(props);
+  // console.log(props);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 100 && startAnimation !== true) {
@@ -109,11 +110,12 @@ export default Home;
 
 export const getServerSideProps = async () => {
   const projectImg = (await prisma.projectImg.findMany({})).reverse();
-  const posts = (
+  let posts = (
     await prisma.post.findMany({
       include: { imgs: true },
     })
   ).reverse();
+  posts = JSON.parse(JSON.stringify(posts));
 
   return { props: { projectImg, posts } };
 };
