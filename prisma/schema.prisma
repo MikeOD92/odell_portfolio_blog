@@ -12,7 +12,7 @@ model Post {
   title String  @db.VarChar(150)
   des String? @db.Text
   body  String? @db.Text
-  body1  String? @db.Text
+  body1  String? @db.Text 
   body2  String? @db.Text
   body3  String? @db.Text
   body4 String? @db.Text

@@ -32,50 +32,49 @@ export default function BlogPost(props: any) {
         />
       </div>
       <div>
-        <p className="mt-20 mb-10 px-24 text-lg">{props.post.body}</p>
-        {props.post.imgs[1] ? (
-          <div className="w-full h-1/4 relative flex flex-row justify-center px-24">
+        <p className="mt-20 mb-10 px-24 text-lg text-justify">
+          {props.post.body}
+        </p>
+        {props.post.imgs[1] && props.post.body1 ? (
+          <div className="w-full h-1/4 relative flex flex-column lg:flex-row px-24">
             <div className="w-1/3 h-1/4">
               <Image
                 src={props.post.imgs[1].location}
-                // fill={true}
                 height={300}
                 width={300}
-                style={{ objectFit: "contain" }}
                 quality={100}
                 alt="blog image"
               />
             </div>
-            {props.post.body1 ? (
-              <p className="text-lg">{props.post.body1}</p>
-            ) : (
-              " "
-            )}
+            <p className="w-2/3 text-lg text-justify">{props.post.body1}</p>
           </div>
+        ) : props.post.body1 ? (
+          <p className="text-lg text-justify px-24">{props.post.body1}</p>
+        ) : (
+          ""
+        )}
+      </div>
+      <div>
+        {props.post.imgs[2] && props.post.body2 ? (
+          <div className="w-full h-1/4 relative flex flex-row justify-between py-10 px-24">
+            <p className="text-lg">{props.post.body2}</p>
+            <div className="w-1/3 h-1/4">
+              <Image
+                src={props.post.imgs[2].location}
+                height={300}
+                width={300}
+                quality={100}
+                alt="blog image"
+              />
+            </div>
+          </div>
+        ) : props.post.body2 ? (
+          <p className="text-lg">{props.post.body2}</p>
         ) : (
           ""
         )}
       </div>
 
-      {props.post.imgs[2] ? (
-        <div className="w-full h-1/4 relative flex justify-items-center">
-          <Image
-            src={props.post.imgs[2].location}
-            fill={true}
-            style={{ objectFit: "contain" }}
-            quality={100}
-            alt="blog image"
-            className="px-24"
-          />
-        </div>
-      ) : (
-        ""
-      )}
-      {props.post.body2 ? (
-        <p className="my-10 px-24 text-lg">{props.post.body2}</p>
-      ) : (
-        " "
-      )}
       {props.post.imgs[3] ? (
         <div className="w-full h-1/4 relative flex justify-items-center">
           <Image
@@ -90,6 +89,7 @@ export default function BlogPost(props: any) {
       ) : (
         ""
       )}
+
       {props.post.body3 ? (
         <p className="my-10 px-24 text-lg">{props.post.body3}</p>
       ) : (
