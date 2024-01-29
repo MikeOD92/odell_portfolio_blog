@@ -49,7 +49,7 @@ import {
 export default function Skills(props: any) {
   let light = props.light;
   return (
-    <div id="skills">
+    <div id="skills" className={`${props.expanded ? "hidden" : ""}`}>
       <div>
         <div
           className={`px-2 my-2 ${

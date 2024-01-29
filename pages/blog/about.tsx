@@ -1,47 +1,9 @@
-import react, { useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { prisma } from "../api/db";
-import { Gi3DStairs } from "react-icons/gi";
-import { TfiBackLeft } from "react-icons/tfi";
+import BlogNavBar from "@/components/BlogNavBar";
 export default function about(props: any) {
   return (
     <div>
-      <div
-        className={`fixed w-full py-2 pl-20 ${
-          props.light
-            ? "bg-zinc-300 border-2 border-b-black"
-            : "bg-black border-b-2 border-b-white"
-        }`}
-      >
-        <div
-          className={`text-xl ${
-            props.light ? "text-black" : "text-white"
-          } flex flex-row justify-end pr-5`}
-        >
-          <Link
-            href="/blog"
-            className={`mr-3 p-2 self-center  
-            ${
-              props.light
-                ? "bg-none hover:bg-black hover:border-white text-black hover:text-white"
-                : "bg-black hover:bg-white hover:border-black text-white hover:text-black"
-            }
-            `}
-          >
-            <TfiBackLeft className={`text-4xl `} />
-          </Link>
-          <Link
-            href="/"
-            className={`text-5xl mb-2 ${
-              props.light ? "hover:text-blue-400" : "hover:text-lime-400"
-            }`}
-          >
-            <Gi3DStairs />
-          </Link>
-        </div>
-      </div>
+      <BlogNavBar light={props.light} />
       <div
         className={`h-full w-full p-10 pt-24 ${
           props.light ? "text-black" : "text-white"

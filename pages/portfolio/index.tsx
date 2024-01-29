@@ -17,11 +17,20 @@ export default function Portfolio(props: any) {
   const south = useInView(southRef);
 
   const [fixed, setFixed] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  // const [projectNum, setProjectNum] = useState(0);
 
+  // const handleExpansion = (e: Event, i: Number) => {
+  //   e.preventDefault();
+  //   // setProjectNum(i);
+  //   setExpanded(true);
+  // };
   useEffect(() => {
     if (!north && south) {
       setFixed(true);
     } else if (north && south) {
+      setFixed(false);
+    } else if (expanded) {
       setFixed(false);
     }
   }, [north, south]);
@@ -46,21 +55,27 @@ export default function Portfolio(props: any) {
           light ? "bg-gradient-to-b from-zinc-100 to-zinc-300" : "bg-black"
         }`}
       >
-        <div
-          className={`md:w-1/3 mt-20 h-100
+        <div className="w-full flex flex-row">
+          <div
+            className={`transition-all ease-in duration-250 ${
+              expanded ? "w-0" : "w-1/3"
+            } mt-20 h-100
           
           ${
             light ? "bg-gradient-to-b from-zinc-100 to-zinc-300" : "bg-black"
           } `}
-        >
-          <Skills light={light} />
-          <div ref={northRef} className="h-0.5 w-0.5" />
-          <div
-            className={`p-2 ${
-              light
-                ? " border-2 border-black text-black"
-                : " border-2 border-white text-white"
-            }
+          >
+            <Skills light={light} expanded={expanded} />
+            <div ref={northRef} className="h-0.5 w-0.5" />
+            <div
+              className={`
+              transition-all ease-in duration-250 p-2 
+              ${expanded ? "hidden" : ""}
+              ${
+                light
+                  ? " border-2 border-black text-black"
+                  : " border-2 border-white text-white"
+              }
             ${
               fixed && light
                 ? "fixed top-0 w-1/3 bg-zinc-300"
@@ -68,33 +83,75 @@ export default function Portfolio(props: any) {
                 ? "fixed top-0 w-1/3"
                 : ""
             }`}
+            >
+              <h3 className="titletxt text-4xl">Contact</h3>
+              <br />
+              <ul>
+                <li className="mt-2">
+                  <Link href="">Resume</Link>
+                </li>
+                <li className="mt-2">
+                  <Link href="mailto:micahelodell660@gmail.com">
+                    Email - Michaelodell660@gmail.com
+                  </Link>
+                </li>
+                <li className="mt-2">
+                  <Link href="https://www.linkedin.com/in/michaelodell92/">
+                    LinkedIn
+                  </Link>
+                </li>
+                <li className="mt-2">
+                  <Link href="https://github.com/MikeOD92" ref={southRef}>
+                    GitHub
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            className={`flex flex-col transition-all ease-in duration-250 ${
+              expanded ? "w-full" : "w-2/3"
+            } mt-20 mx-2`}
           >
-            <h3 className="titletxt text-4xl">Contact</h3>
-            <br />
-            <ul>
-              <li className="mt-2">
-                <Link href="">Resume</Link>
-              </li>
-              <li className="mt-2">
-                <Link href="mailto:micahelodell660@gmail.com">
-                  Email - Michaelodell660@gmail.com
-                </Link>
-              </li>
-              <li className="mt-2">
-                <Link href="https://www.linkedin.com/in/michaelodell92/">
-                  LinkedIn
-                </Link>
-              </li>
-              <li className="mt-2">
-                <Link href="https://github.com/MikeOD92" ref={southRef}>
-                  GitHub
-                </Link>
-              </li>
-            </ul>
+            {props.posts?.map((post: any, i: Number) => {
+              return (
+                <Projects
+                  key={`project${i}`}
+                  post={post}
+                  i={i}
+                  light={props.light}
+                  expanded={expanded}
+                  setExpanded={setExpanded}
+                  // setProjectNum={setProjectNum}
+                />
+              );
+            })}
+            {/* {!expanded ? (
+              props.posts?.map((post: any, i: Number) => {
+                return (
+                  <Projects
+                    key={`project${i}`}
+                    post={post}
+                    i={i}
+                    light={props.light}
+                    expanded={expanded}
+                    setExpanded={setExpanded}
+                    setProjectNum={setProjectNum}
+                  />
+                );
+              })
+            ) : (
+              <Projects
+                post={props.posts[projectNum]}
+                light={props.light}
+                expanded={expanded}
+                setExpanded={setExpanded}
+                setProjectNum={setProjectNum}
+              />
+            )} */}
           </div>
         </div>
-
-        <Projects light={light} posts={props.posts} />
       </div>
     </div>
   );

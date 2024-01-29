@@ -11,7 +11,7 @@ export default function BlogPost(props: any) {
   console.log(props.post);
   return (
     <div
-      className={`${
+      className={`pb-24 ${
         props.light ? "bg-zinc-300 text-black" : "bg-black text-white"
       }`}
     >
@@ -32,105 +32,99 @@ export default function BlogPost(props: any) {
         />
       </div>
       <div>
-        <p className="mt-20 mb-10 px-24 text-lg text-justify">
-          {props.post.body}
-        </p>
+        <p className="mt-20 px-24 text-lg text-justify">{props.post.body}</p>
         {props.post.imgs[1] && props.post.body1 ? (
-          <div className="w-full h-1/4 relative flex flex-column lg:flex-row px-24">
-            <div className="w-1/3 h-1/4">
+          <div className="w-full h-1/4 px-24">
+            <div className="w-full h-full flex justify-center py-10">
               <Image
                 src={props.post.imgs[1].location}
                 height={300}
-                width={300}
+                width={500}
                 quality={100}
                 alt="blog image"
               />
             </div>
-            <p className="w-2/3 text-lg text-justify">{props.post.body1}</p>
+            <p className="w-full text-lg text-justify">{props.post.body1}</p>
           </div>
         ) : props.post.body1 ? (
           <p className="text-lg text-justify px-24">{props.post.body1}</p>
         ) : (
           ""
         )}
-      </div>
-      <div>
         {props.post.imgs[2] && props.post.body2 ? (
-          <div className="w-full h-1/4 relative flex flex-row justify-between py-10 px-24">
-            <p className="text-lg">{props.post.body2}</p>
-            <div className="w-1/3 h-1/4">
+          <div className="w-full h-1/4 px-24">
+            <div className="w-full h-full flex justify-center py-10">
               <Image
                 src={props.post.imgs[2].location}
                 height={300}
-                width={300}
+                width={500}
                 quality={100}
                 alt="blog image"
               />
             </div>
+            <p className="w-full text-lg text-justify">{props.post.body2}</p>
           </div>
         ) : props.post.body2 ? (
-          <p className="text-lg">{props.post.body2}</p>
+          <p className="text-lg text-justify px-24">{props.post.body2}</p>
+        ) : (
+          ""
+        )}
+        {props.post.imgs[3] && props.post.body3 ? (
+          <div className="w-full h-1/4 px-24">
+            <div className="w-full h-full flex justify-center py-10">
+              <Image
+                src={props.post.imgs[3].location}
+                height={300}
+                width={500}
+                quality={100}
+                alt="blog image"
+              />
+            </div>
+            <p className="w-full text-lg text-justify">{props.post.body3}</p>
+          </div>
+        ) : props.post.body3 ? (
+          <p className="text-lg text-justify px-24">{props.post.body3}</p>
+        ) : (
+          ""
+        )}
+        {props.post.imgs[4] && props.post.body4 ? (
+          <div className="w-full h-1/4 px-24">
+            <div className="w-full h-full flex justify-center py-10">
+              <Image
+                src={props.post.imgs[4].location}
+                height={300}
+                width={500}
+                quality={100}
+                alt="blog image"
+              />
+            </div>
+            <p className="w-full text-lg text-justify">{props.post.body4}</p>
+          </div>
+        ) : props.post.body4 ? (
+          <p className="text-lg text-justify px-24">{props.post.body4}</p>
+        ) : (
+          ""
+        )}
+        {props.post.imgs[5] && props.post.body5 ? (
+          <div className="w-full h-1/4 px-24">
+            <div className="w-full h-full flex justify-center py-10">
+              <Image
+                src={props.post.imgs[5].location}
+                height={300}
+                width={500}
+                quality={100}
+                alt="blog image"
+              />
+            </div>
+            <p className="w-full text-lg text-justify">{props.post.body5}</p>
+          </div>
+        ) : props.post.body5 ? (
+          <p className="text-lg text-justify px-24">{props.post.body5}</p>
         ) : (
           ""
         )}
       </div>
-
-      {props.post.imgs[3] ? (
-        <div className="w-full h-1/4 relative flex justify-items-center">
-          <Image
-            src={props.post.imgs[3].location}
-            fill={true}
-            style={{ objectFit: "contain" }}
-            quality={100}
-            alt="blog image"
-            className="px-24"
-          />
-        </div>
-      ) : (
-        ""
-      )}
-
-      {props.post.body3 ? (
-        <p className="my-10 px-24 text-lg">{props.post.body3}</p>
-      ) : (
-        " "
-      )}
-      {props.post.imgs[4] ? (
-        <div className="w-full h-1/5 relative flex justify-items-center">
-          <Image
-            src={props.post.imgs[4].location}
-            fill={true}
-            style={{ objectFit: "contain" }}
-            quality={100}
-            alt="blog image"
-            className="px-24"
-          />
-        </div>
-      ) : (
-        ""
-      )}
-      {props.post.body4 ? (
-        <p className="my-10 px-24 text-lg">{props.post.body4}</p>
-      ) : (
-        " "
-      )}
-      {props.post.imgs[5] ? (
-        <div className="w-full h-1/3 relative flex justify-items-center">
-          <Image
-            src={props.post.imgs[5].location}
-            fill={true}
-            style={{ objectFit: "contain" }}
-            quality={100}
-            alt="blog image"
-            className="px-24"
-          />
-        </div>
-      ) : (
-        ""
-      )}
     </div>
-    // </div>
-    // </div>
   );
 }
 export const getServerSideProps = async (context: any) => {
