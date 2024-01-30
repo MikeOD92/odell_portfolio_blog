@@ -52,7 +52,7 @@ export default function Skills(props: any) {
     <div id="skills" className={`${props.expanded ? "hidden" : ""}`}>
       <div>
         <div
-          className={`px-2 my-2 ${
+          className={`p-2 my-2 ${
             light
               ? " border-2 border-black border-black text-black"
               : " border-2 border-white border-white text-white"

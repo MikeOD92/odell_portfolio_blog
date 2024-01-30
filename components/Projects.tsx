@@ -6,10 +6,10 @@ export default function Projects(props: any) {
 
   const handleClick = () => {
     if (props.expanded) {
-      // props.setProjectNum(0);
+      props.setProjectNum(0);
       props.setExpanded(!props.expanded);
     } else {
-      // props.setProjectNum(props.i);
+      props.setProjectNum(props.i);
       props.setExpanded(!props.expanded);
     }
   };

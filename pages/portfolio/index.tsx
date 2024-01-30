@@ -3,11 +3,11 @@ import react, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Skills from "../../components/Skills";
 import Projects from "@/components/Projects";
+import ProjectExpanded from "@/components/ProjectExpand";
 import { Gi3DStairs } from "react-icons/gi";
 import Link from "next/link";
 import { useScroll, useMotionValueEvent, useInView } from "framer-motion";
 import { prisma } from "../api/db";
-
 export default function Portfolio(props: any) {
   let light = props.light;
   const northRef = useRef(null);
@@ -18,7 +18,7 @@ export default function Portfolio(props: any) {
 
   const [fixed, setFixed] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  // const [projectNum, setProjectNum] = useState(0);
+  const [projectNum, setProjectNum] = useState(0);
 
   // const handleExpansion = (e: Event, i: Number) => {
   //   e.preventDefault();
@@ -33,20 +33,17 @@ export default function Portfolio(props: any) {
     } else if (expanded) {
       setFixed(false);
     }
-  }, [north, south]);
+  }, [north, south, expanded]);
 
   return (
     <div
       className={`h-full ${
-        light ? "bg-gradient-to-b from-zinc-100 to-zinc-300" : "bg-black"
+        light
+          ? "bg-gradient-to-b from-zinc-100 to-zinc-300 text-black"
+          : "bg-black text-white"
       }`}
     >
-      <Link
-        href="/"
-        className={`absolute right-5 top-2 text-5xl ${
-          light ? "text-black" : "text-white"
-        }`}
-      >
+      <Link href="/" className={`absolute right-5 top-2 text-5xl `}>
         <Gi3DStairs />
       </Link>
 
@@ -66,10 +63,10 @@ export default function Portfolio(props: any) {
           } `}
           >
             <Skills light={light} expanded={expanded} />
-            <div ref={northRef} className="h-0.5 w-0.5" />
+            <div ref={northRef} className="h-0.05 w-0.05" />
             <div
               className={`
-              transition-all ease-in duration-250 p-2 
+              transition-all ease-in duration-250 p-2
               ${expanded ? "hidden" : ""}
               ${
                 light
@@ -78,9 +75,9 @@ export default function Portfolio(props: any) {
               }
             ${
               fixed && light
-                ? "fixed top-0 w-1/3 bg-zinc-300"
+                ? "fixed top-2 w-1/3 bg-zinc-300"
                 : fixed
-                ? "fixed top-0 w-1/3"
+                ? "fixed top-2 w-1/3  "
                 : ""
             }`}
             >
@@ -114,20 +111,16 @@ export default function Portfolio(props: any) {
               expanded ? "w-full" : "w-2/3"
             } mt-20 mx-2`}
           >
-            {props.posts?.map((post: any, i: Number) => {
-              return (
-                <Projects
-                  key={`project${i}`}
-                  post={post}
-                  i={i}
-                  light={props.light}
-                  expanded={expanded}
-                  setExpanded={setExpanded}
-                  // setProjectNum={setProjectNum}
-                />
-              );
-            })}
-            {/* {!expanded ? (
+            {expanded && props.posts ? (
+              <ProjectExpanded
+                post={props.posts[projectNum]}
+                i={projectNum}
+                light={props.light}
+                expanded={expanded}
+                setExpanded={setExpanded}
+                setProjectNum={setProjectNum}
+              />
+            ) : (
               props.posts?.map((post: any, i: Number) => {
                 return (
                   <Projects
@@ -141,15 +134,7 @@ export default function Portfolio(props: any) {
                   />
                 );
               })
-            ) : (
-              <Projects
-                post={props.posts[projectNum]}
-                light={props.light}
-                expanded={expanded}
-                setExpanded={setExpanded}
-                setProjectNum={setProjectNum}
-              />
-            )} */}
+            )}
           </div>
         </div>
       </div>
