@@ -75,9 +75,9 @@ export default function Portfolio(props: any) {
               }
             ${
               fixed && light
-                ? "fixed top-2 w-1/3 bg-zinc-300"
+                ? "fixed top-0 w-1/3 bg-zinc-300"
                 : fixed
-                ? "fixed top-2 w-1/3  "
+                ? "fixed top-0 w-1/3"
                 : ""
             }`}
             >
@@ -142,9 +142,11 @@ export default function Portfolio(props: any) {
   );
 }
 export const getServerSideProps = async () => {
-  const posts = await prisma.project.findMany({
-    include: { imgs: true },
-  });
+  const posts = (
+    await prisma.project.findMany({
+      include: { imgs: true },
+    })
+  ).reverse();
 
   return { props: { posts } };
 };

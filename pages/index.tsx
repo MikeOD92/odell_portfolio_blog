@@ -6,11 +6,9 @@ import HomePageProjectCard from "@/components/HomePageProjectCard";
 import HomePageBlogCard from "@/components/HomePageBlogCard";
 
 const Home = (props: any) => {
-  // console.log(props.post);
   let light = props.light;
   const { scrollY } = useScroll();
   const [startAnimation, setStartAnimation] = useState(false);
-  // console.log(props);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 100 && startAnimation !== true) {
@@ -97,8 +95,10 @@ const Home = (props: any) => {
             </h3>
           </Link>
           <div className="overflow-auto scrollDisplay">
-            {props.projectImg.map((img: any, i: Number) => {
-              return <HomePageProjectCard key={`img ${i}`} img={img} />;
+            {props.project.map((project: any, i: Number) => {
+              return (
+                <HomePageProjectCard key={`img ${i}`} img={project.imgs[0]} />
+              );
             })}
           </div>
         </div>
@@ -109,7 +109,11 @@ const Home = (props: any) => {
 export default Home;
 
 export const getServerSideProps = async () => {
-  const projectImg = (await prisma.projectImg.findMany({})).reverse();
+  const project = (
+    await prisma.project.findMany({
+      include: { imgs: true },
+    })
+  ).reverse();
   let posts = (
     await prisma.post.findMany({
       include: { imgs: true },
@@ -117,5 +121,5 @@ export const getServerSideProps = async () => {
   ).reverse();
   posts = JSON.parse(JSON.stringify(posts));
 
-  return { props: { projectImg, posts } };
+  return { props: { project, posts } };
 };

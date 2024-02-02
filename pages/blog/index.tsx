@@ -87,14 +87,16 @@ export default function App(props: any) {
             }`}
           >
             <h2
-              className={`text-7xl displaytxt w-full h-full  text-white ${
+              className={`text-7xl titletxt w-full h-full  text-white ${
                 props.light
                   ? "bg-gradient-to-b from-black/50 to-transparent"
                   : ""
-              } p-10  mb-3`}
+              } p-10`}
             >
-              <span className="titletxt"> O&apos;Dell&apos;s</span> <br />
-              Linux and Web Development Blog
+              Odd Parts: <br />
+              <span className="displaytxt">
+                Linux, Web Development, Art & Tech
+              </span>
             </h2>
           </div>
           <Link

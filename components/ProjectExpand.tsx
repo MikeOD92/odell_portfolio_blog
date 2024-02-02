@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { IoMdClose } from "react-icons/io";
 import { MdChevronRight, MdChevronLeft } from "react-icons/md";
+
 export default function ProjectExpanded(props: any) {
   const light = props.light;
-
+  const [caroImg, setCaroImg] = useState(0);
+  const handleCaroClick = (fwd: boolean) => {
+    if (fwd && caroImg + 1 < props.post.imgs.length) {
+      setCaroImg(caroImg + 1);
+    } else if (fwd && caroImg + 1 === props.post.imgs.length) {
+      setCaroImg(0);
+    } else if (!fwd && caroImg > 0) {
+      setCaroImg(caroImg - 1);
+    } else {
+      setCaroImg(props.post.imgs.length - 1);
+    }
+  };
   const handleClick = () => {
     if (props.expanded) {
       props.setProjectNum(0);
@@ -40,15 +52,29 @@ export default function ProjectExpanded(props: any) {
             light ? "text-black" : "text-white"
           } `}
         >
-          <MdChevronLeft className="m-20 text-7xl" />
+          {props.post.imgs.length > 1 ? (
+            <MdChevronLeft
+              className="m-20 text-7xl"
+              onClick={() => handleCaroClick(false)}
+            />
+          ) : (
+            ""
+          )}
           <Image
-            src={props.post.imgs[0].location}
+            src={props.post.imgs[caroImg].location}
             width="1000"
             height="1000"
             alt={`portfolio image of ${props.post.title}`}
             className="w-2/3 mb-5 p-30"
           />
-          <MdChevronRight className="m-20 text-7xl" />
+          {props.post.imgs.length > 1 ? (
+            <MdChevronRight
+              className="m-20 text-7xl"
+              onClick={() => handleCaroClick(true)}
+            />
+          ) : (
+            ""
+          )}
         </div>
 
         <p>{props.post.des}</p>
