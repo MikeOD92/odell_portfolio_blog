@@ -24,11 +24,11 @@ const Home = (props: any) => {
         <motion.div
           className={`w-full h-screen ${light ? "text-black" : "text-white"}`}
           animate={
-            startAnimation ? { x: 250, transition: { duration: 1 } } : { x: 0 }
+            startAnimation ? { x: 500, transition: { duration: 2 } } : { x: 0 }
           }
         >
           <div>
-            <div className="absolute top-1/3 left-24">
+            <div className="absolute top-1/4 lg:top-1/3 mx-10 lg:left-24">
               <div
                 className={`border-2 ${
                   light ? "border-black" : "border-zinc-200"
@@ -48,14 +48,14 @@ const Home = (props: any) => {
         <motion.div
           layout
           style={{ x: scrollY }}
-          className={`w-full ${
+          className={`w-full hidden lg:block ${
             light ? "bg-[url(/img/snowhole2.jpg)]" : "bg-[url(/img/rocks2.jpg)]"
           } bg-cover`}
         ></motion.div>
       </div>
-      <div className="h-screen w-full flex flex-row pt-5">
-        <div className="text-5xl text-center p-5 w-full h-full flex flex-col">
-          <Link href="/blog" className="">
+      <div className="lg:h-screen w-full flex flex-col md:flex-row pt-5">
+        <div className="text-5xl text-center p-5 lg:w-full  h-full flex md:flex-col">
+          <Link href="/blog" className="w-full">
             <h3
               className={`titletxt w-full border-2 ${
                 light ? "text-black border-black" : "text-white border-zinc-200"
@@ -68,7 +68,7 @@ const Home = (props: any) => {
               Blog
             </h3>
           </Link>
-          <div className="overflow-auto scrollDisplay">
+          <div className="overflow-auto hidden md:block scrollDisplay">
             {props.posts.map((post: any, i: Number) => {
               return (
                 <HomePageBlogCard
@@ -94,7 +94,7 @@ const Home = (props: any) => {
               Web Portfolio
             </h3>
           </Link>
-          <div className="overflow-auto scrollDisplay">
+          <div className="overflow-auto hidden md:block scrollDisplay">
             {props.project.map((project: any, i: Number) => {
               return (
                 <HomePageProjectCard key={`img ${i}`} img={project.imgs[0]} />

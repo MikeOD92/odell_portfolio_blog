@@ -29,7 +29,7 @@ export default function ProjectExpanded(props: any) {
 
   return (
     <div
-      className={`h-full my-2 border-2 m-1 ${
+      className={`h-full m-2 border-2 ${
         light ? "border-black" : "border-white"
       }`}
     >
@@ -77,8 +77,8 @@ export default function ProjectExpanded(props: any) {
           )}
         </div>
 
-        <p>{props.post.des}</p>
-        {props.expanded ? <p>{props.post.body}</p> : ""}
+        {/* <p>{props.post.des}</p> */}
+        <p>{props.post.body}</p>
       </div>
     </div>
   );

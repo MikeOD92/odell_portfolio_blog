@@ -79,15 +79,15 @@ export default function App(props: any) {
           </Link>
         </div>
       </div>
-      <div className="flex flex-row px-5 pt-24 h-screen box-border">
-        <div className="w-1/2 flex flex-col">
+      <div className="flex flex-col lg:flex-row px-5 pt-24 h-screen box-border">
+        <div className="w-full lg:w-1/2 flex flex-col">
           <div
-            className={`h-2/3 mb-5 border-2 text-white ${
+            className={`lg:h-2/3 mb-5 border-2 text-white ${
               props.light ? "border-black" : "border-white"
             }`}
           >
             <h2
-              className={`text-7xl titletxt w-full h-full  text-white ${
+              className={`text-5xl md:text-7xl titletxt w-full h-full  text-white ${
                 props.light
                   ? "bg-gradient-to-b from-black/50 to-transparent"
                   : ""
@@ -114,14 +114,26 @@ export default function App(props: any) {
                 alt="author portait"
                 width={150}
                 height={150}
-                className={`rounded-full object-contain border-2 bg-none ${
+                className={`rounded-full object-contain border-2 bg-none hidden md:block ${
                   props.light ? "border-black " : "border-white "
                 }`}
               />
             </div>
           </Link>
         </div>
-        <div className="w-1/2 flex flex-col ml-3">
+        <div className="lg:hidden flex flex-col">
+          {showPosts.map((itm: any, i: number) => {
+            return (
+              <BlogIndexCard
+                post={itm}
+                width="w-full"
+                key={`blogPost${i}`}
+                light={props.light}
+              />
+            );
+          })}
+        </div>
+        <div className="w-1/2 lg:flex flex-col ml-3 hidden ">
           <div className="flex flex-row h-1/2 mb-5">
             {showPosts[0] ? (
               <BlogIndexCard
@@ -143,20 +155,18 @@ export default function App(props: any) {
             )}
           </div>
           {showPosts[2] ? (
-            <div className="h-1/2">
-              <BlogIndexCard
-                post={showPosts[2]}
-                width={"w-100"}
-                height={"h-full"}
-                light={props.light}
-              />
-            </div>
+            <BlogIndexCard
+              post={showPosts[2]}
+              width={"w-100"}
+              height={"h-1/2"}
+              light={props.light}
+            />
           ) : (
             ""
           )}
         </div>
       </div>
-      <div className="h-screen px-2.5 mt-5 grid grid-cols-4 grid-rows-2 gap-5">
+      <div className="h-screen px-2.5 mt-5 hidden lg:grid grid-cols-4 grid-rows-2 gap-5">
         {showPosts.slice(3).map((itm: any, i: number) => {
           return (
             <BlogIndexCard
