@@ -27,7 +27,7 @@ export default function App(props: any) {
   return (
     <div>
       <div
-        className={`fixed w-full pt-5 pl-20 ${
+        className={`fixed w-full pt-2 pl-20 ${
           props.light
             ? "bg-zinc-200 border-2 border-b-black"
             : "bg-black border-b-2 border-b-white"
@@ -36,50 +36,55 @@ export default function App(props: any) {
         <div
           className={`text-xl ${
             props.light ? "text-black" : "text-white"
-          } flex flex-row justify-around`}
+          } flex flex-row lg:justify-end`}
         >
-          <a
-            className={`hoverDisplay ${
-              filter === "linux" ? "underline decoration-2" : ""
-            }`}
-            onClick={() => setFilter("linux")}
-          >
-            Linux
-          </a>
-          <a
-            className={`hoverDisplay ${
-              filter === "frontEnd" ? "underline decoration-2" : ""
-            }`}
-            onClick={() => setFilter("frontEnd")}
-          >
-            Front End
-          </a>
-          <a
-            className={`hoverDisplay ${
-              filter === "backEnd" ? "underline decoration-2" : ""
-            }`}
-            onClick={() => setFilter("backEnd")}
-          >
-            Back End
-          </a>
-          <a
-            className={`hoverDisplay ${
-              filter === "other" ? "underline decoration-2" : ""
-            }`}
-            onClick={() => setFilter("other")}
-          >
-            Other
-          </a>
-          <a className="hoverDisplay" onClick={() => setFilter("")}>
-            All
-          </a>
+          <div className="w-full flex flex-row justify-around pt-2">
+            <a
+              className={`hoverDisplay hidden md:block ${
+                filter === "linux" ? "underline decoration-2" : ""
+              }`}
+              onClick={() => setFilter("linux")}
+            >
+              Linux
+            </a>
+            <a
+              className={`hoverDisplay hidden md:block ${
+                filter === "frontEnd" ? "underline decoration-2" : ""
+              }`}
+              onClick={() => setFilter("frontEnd")}
+            >
+              Front End
+            </a>
+            <a
+              className={`hoverDisplay hidden md:block ${
+                filter === "backEnd" ? "underline decoration-2" : ""
+              }`}
+              onClick={() => setFilter("backEnd")}
+            >
+              Back End
+            </a>
+            <a
+              className={`hoverDisplay hidden md:block ${
+                filter === "other" ? "underline decoration-2" : ""
+              }`}
+              onClick={() => setFilter("other")}
+            >
+              Other
+            </a>
+            <a
+              className="hoverDisplay hidden md:block"
+              onClick={() => setFilter("")}
+            >
+              All
+            </a>
+          </div>
 
-          <Link href="/" className={`text-5xl mb-2`}>
+          <Link href="/" className={`text-5xl mb-2 mx-5`}>
             <Gi3DStairs />
           </Link>
         </div>
       </div>
-      <div className="flex flex-col lg:flex-row px-5 pt-24 h-screen box-border">
+      <div className="flex flex-col lg:flex-row px-5 pt-24 h-full box-border">
         <div className="w-full lg:w-1/2 flex flex-col">
           <div
             className={`lg:h-2/3 mb-5 border-2 text-white ${

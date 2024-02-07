@@ -17,7 +17,11 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   });
   return (
-    <div>
+    <div
+      className={
+        light ? "bg-gradient-to-b from-zinc-100 to-zinc-400" : "bg-black"
+      }
+    >
       <motion.div
         className="fixed z-20"
         onClick={() => (startAnimation === false ? setlight(!light) : "")}

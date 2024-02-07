@@ -4,6 +4,7 @@ import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { prisma } from "./api/db";
 import HomePageProjectCard from "@/components/HomePageProjectCard";
 import HomePageBlogCard from "@/components/HomePageBlogCard";
+import { BsChevronCompactDown } from "react-icons/bs";
 
 const Home = (props: any) => {
   let light = props.light;
@@ -19,7 +20,13 @@ const Home = (props: any) => {
   });
 
   return (
-    <div>
+    <div
+      className={`h-full ${
+        light
+          ? "bg-gradient-to-b from-zinc-100 to-zinc-300 text-black"
+          : "bg-black text-white"
+      }`}
+    >
       <div className="flex flex-col md:flex-row w-full overflow-hidden">
         <motion.div
           className={`w-full h-screen ${light ? "text-black" : "text-white"}`}
@@ -52,6 +59,20 @@ const Home = (props: any) => {
             light ? "bg-[url(/img/snowhole2.jpg)]" : "bg-[url(/img/rocks2.jpg)]"
           } bg-cover`}
         ></motion.div>
+        <motion.div
+          className="absolute top-3/4 left-1/3 md:hidden"
+          animate={
+            startAnimation
+              ? { opacity: 0, transition: { duration: 1 } }
+              : { opacity: 0.45 }
+          }
+        >
+          <BsChevronCompactDown
+            className={`text-9xl ${
+              light ? "text-black border-black" : "text-white"
+            }`}
+          />
+        </motion.div>
       </div>
       <div className="lg:h-screen w-full flex flex-col md:flex-row pt-5">
         <div className="text-5xl text-center p-5 lg:w-full  h-full flex md:flex-col">
