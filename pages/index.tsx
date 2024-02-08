@@ -12,7 +12,7 @@ const Home = (props: any) => {
   const [startAnimation, setStartAnimation] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 100 && startAnimation !== true) {
+    if (latest > 25 && startAnimation !== true) {
       setStartAnimation(true);
     } else if (latest <= 100 && startAnimation !== false) {
       setStartAnimation(false);
@@ -21,41 +21,75 @@ const Home = (props: any) => {
 
   return (
     <div
-      className={`h-full ${
+      className={`h-full overflow-y-hidden ${
         light
           ? "bg-gradient-to-b from-zinc-100 to-zinc-300 text-black"
           : "bg-black text-white"
       }`}
     >
       <div className="flex flex-col md:flex-row w-full overflow-hidden">
-        <motion.div
+        <div
           className={`w-full h-screen ${light ? "text-black" : "text-white"}`}
-          animate={
-            startAnimation ? { x: 500, transition: { duration: 2 } } : { x: 0 }
-          }
         >
           <div>
-            <div className="absolute top-1/4 lg:top-1/3 mx-10 lg:left-24">
-              <div
-                className={`border-2 ${
-                  light ? "border-black" : "border-zinc-200"
-                } p-5`}
+            <div className="relative top-[20vh] md:absolute top-1/4 md:top-1/3 mx-10 md:left-24 z-10">
+              <motion.div
+                animate={
+                  startAnimation
+                    ? {
+                        x: 500,
+                        transition: { duration: 2 },
+                      }
+                    : {
+                        x: 0,
+                        transition: { duration: 1 },
+                      }
+                }
               >
-                <h1 className="text-6xl titletxt"> Michael O&apos;Dell</h1>
-                <h2 className="text-4xl displaytxt ">Web Developer | Artist</h2>
-              </div>
-              <p className="pt-5 bodytxt">
-                Lorem ispsum Lorem ispsum Lorem ispsum Lorem ispsum Lorem <br />{" "}
-                ispsum Lorem ispsum Lorem ispsum
-              </p>
+                <div
+                  className={`border-2 ${
+                    light ? "border-black" : "border-zinc-200"
+                  } p-5`}
+                >
+                  <h1 className="text-6xl titletxt"> Michael O&apos;Dell</h1>
+                  <h2 className="text-4xl displaytxt ">
+                    Web Developer | Artist
+                  </h2>
+                </div>
+              </motion.div>
+
+              <motion.div
+                animate={
+                  startAnimation
+                    ? { x: -500, transition: { duration: 2 } }
+                    : { x: 0, transition: { duration: 1 } }
+                }
+              >
+                <a href="/contact">
+                  <div
+                    className={`w-1/3 mt-5 border-2 ${
+                      light
+                        ? "border-black hover:bg-black hover:text-white"
+                        : "border-zinc-200 hover:bg-white hover:text-black"
+                    } p-5`}
+                  >
+                    <p className="text-2xl md:text-3xl displaytxt">Contact</p>
+                  </div>
+                </a>
+              </motion.div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         <motion.div
           layout
+          animate={
+            startAnimation
+              ? { opacity: 0, transition: { duration: 2 } }
+              : { opacity: 1, transition: { duration: 1 } }
+          }
           style={{ x: scrollY }}
-          className={`w-full hidden lg:block ${
+          className={`w-full hidden md:block ${
             light ? "bg-[url(/img/snowhole2.jpg)]" : "bg-[url(/img/rocks2.jpg)]"
           } bg-cover`}
         ></motion.div>
@@ -67,11 +101,13 @@ const Home = (props: any) => {
               : { opacity: 0.45 }
           }
         >
-          <BsChevronCompactDown
-            className={`text-9xl ${
-              light ? "text-black border-black" : "text-white"
-            }`}
-          />
+          <a href="#bottom">
+            <BsChevronCompactDown
+              className={`text-9xl p-10${
+                light ? "text-black border-black" : "text-white"
+              }`}
+            />
+          </a>
         </motion.div>
       </div>
       <div className="lg:h-screen w-full flex flex-col md:flex-row pt-5">
@@ -124,6 +160,7 @@ const Home = (props: any) => {
           </div>
         </div>
       </div>
+      <span id="bottom" />
     </div>
   );
 };

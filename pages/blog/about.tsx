@@ -5,12 +5,12 @@ export default function about(props: any) {
     <div>
       <BlogNavBar light={props.light} />
       <div
-        className={`h-full w-full p-10 pt-24 ${
+        className={`h-full w-full p-5 md:p-10 pt-20 ${
           props.light ? "text-black" : "text-white"
         }`}
       >
         {" "}
-        <div className="flex flex-row mb-5">
+        <div className="flex flex-col md:flex-row mt-24 mb-5">
           <h1 className="titletxt text-7xl w-full">
             About Me _ <span className="displaytxt">Hello World</span>
           </h1>
@@ -19,17 +19,17 @@ export default function about(props: any) {
             height="300"
             width="300"
             alt="author portrait"
-            className="rounded-full"
+            className="rounded-full p-10 md:p-0"
           />
         </div>
         <div
-          className={`p-20  text-md ${
+          className={`p-5 lg:p-20 text-md ${
             props.light
               ? "text-slate-700 bg-zinc-200"
               : "text-zinc-200 bg-[#4c483e]"
           } rounded-r-2xl mb-5`}
         >
-          <h2 className="text-2xl">
+          <h2 className="text-xl md:text-2xl">
             Hello, welcome to my yet unnamed blog and thank you for clicking on
             the about me post.
           </h2>
