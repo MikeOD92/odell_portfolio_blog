@@ -108,7 +108,7 @@ export default function Portfolio(props: any) {
 
           <div
             className={`flex flex-col transition-all ease-in duration-250 ${
-              expanded ? "w-100" : "w-100 md:w-2/3"
+              expanded ? "h-screen md:w-[100vw]" : "w-100 md:w-2/3"
             } mt-20 mx-2`}
           >
             {expanded && props.posts ? (

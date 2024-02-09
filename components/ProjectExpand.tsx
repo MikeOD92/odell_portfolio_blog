@@ -29,15 +29,11 @@ export default function ProjectExpanded(props: any) {
 
   return (
     <div
-      className={`h-full m-2 border-2 ${
-        light ? "border-black" : "border-white"
+      className={`h-[85vh] md:h-full m-2 border-2 overflow-auto scrollDisplay ${
+        light ? "border-black bg-zinc-100" : "border-white bg-black"
       }`}
     >
-      <div
-        className={`p-5 round-md h-full ${
-          light ? "text-black bg-zinc-100" : "bg-black"
-        }`}
-      >
+      <div className={`p-5 round-md ${light ? "text-black" : ""}`}>
         <div className="flex flex-row justify-between">
           <h3 className="displaytxt text-4xl mb-2 ">{props.post.title}</h3>
           <button className="p-25 text-4xl" onClick={() => handleClick()}>
