@@ -38,6 +38,7 @@ model ProjectImg {
   parentId Int
   parent Project @relation(fields: [parentId], references: [id])
   location String  @db.VarChar(150)
+  alt String @db.VarChar(150) @default("")
 
   @@map(name: "projectImg")
 }
@@ -47,6 +48,8 @@ model PostImg {
   parentId Int
   parent Post @relation(fields: [parentId], references: [id])
   location String  @db.VarChar(150)
+  alt String @db.VarChar(150) @default("")
+  position String? @default("center")
 
   @@map(name: "postImg")
 }

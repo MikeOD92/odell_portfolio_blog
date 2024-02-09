@@ -89,7 +89,7 @@ const Home = (props: any) => {
               : { opacity: 1, transition: { duration: 1 } }
           }
           style={{ x: scrollY }}
-          className={`w-full hidden md:block ${
+          className={`h-screen w-full hidden md:block ${
             light ? "bg-[url(/img/snowhole2.jpg)]" : "bg-[url(/img/rocks2.jpg)]"
           } bg-cover`}
         ></motion.div>
@@ -111,7 +111,7 @@ const Home = (props: any) => {
         </motion.div>
       </div>
       <div className="lg:h-screen w-full flex flex-col md:flex-row pt-5">
-        <div className="text-5xl text-center p-5 lg:w-full  h-full flex md:flex-col">
+        <div className="text-5xl text-center p-5 w-full h-full flex md:flex-col">
           <Link href="/blog" className="w-full">
             <h3
               className={`titletxt w-full border-2 ${

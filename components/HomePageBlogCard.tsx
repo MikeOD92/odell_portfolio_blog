@@ -21,7 +21,7 @@ export default function HomePageBlogCard(props: any) {
       >
         <Link href={`/blog/${props.post.id}`}>
           <h1
-            className={`text-center h-fill w-fill ${
+            className={`text-center h-full w-full ${
               props.light
                 ? "bg-black/20 hover:bg-black/50 "
                 : "bg-black/50 hover:bg-black/20"

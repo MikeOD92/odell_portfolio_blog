@@ -1,0 +1,6 @@
+-- AlterTable
+ALTER TABLE `postImg` ADD COLUMN `alt` VARCHAR(150) NOT NULL DEFAULT '',
+    ADD COLUMN `position` VARCHAR(191) NULL DEFAULT 'center';
+
+-- AlterTable
+ALTER TABLE `projectImg` ADD COLUMN `alt` VARCHAR(150) NOT NULL DEFAULT '';

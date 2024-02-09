@@ -29,7 +29,7 @@ export default function ProjectExpanded(props: any) {
 
   return (
     <div
-      className={`h-[85vh] md:h-full m-2 border-2 overflow-auto scrollDisplay ${
+      className={`h-[85vh] md:h-full m-2 border-2 overflow-scroll md:overflow-wrap scrollDisplay ${
         light ? "border-black bg-zinc-100" : "border-white bg-black"
       }`}
     >
