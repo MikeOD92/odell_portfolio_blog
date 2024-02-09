@@ -85,7 +85,7 @@ export default function App(props: any) {
         </div>
       </div>
       <div className="flex flex-col lg:flex-row px-5 pt-24 h-full box-border">
-        <div className="w-full lg:w-1/2 flex flex-col">
+        <div className="w-full lg:w-1/2 xl:w-3/4 flex flex-col">
           <div
             className={`lg:h-2/3 mb-5 border-2 text-white ${
               props.light ? "border-black" : "border-white"

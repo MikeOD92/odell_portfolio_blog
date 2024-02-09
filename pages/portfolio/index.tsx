@@ -52,11 +52,11 @@ export default function Portfolio(props: any) {
           light ? "bg-gradient-to-b from-zinc-100 to-zinc-300" : "bg-black"
         }`}
       >
-        <div className="w-full flex flex-row">
+        <div className="w-full flex flex-col-reverse md:flex-row">
           <div
             className={`transition-all ease-in duration-250 ${
-              expanded ? "w-0" : "w-1/3"
-            } mt-20 h-100
+              expanded ? "w-0" : "w-100 md:w-1/3"
+            } mx-3 md:mx-0 md:mt-20 h-100
           
           ${
             light ? "bg-gradient-to-b from-zinc-100 to-zinc-300" : "bg-black"
@@ -75,9 +75,9 @@ export default function Portfolio(props: any) {
               }
             ${
               fixed && light
-                ? "fixed top-0 w-1/3 bg-zinc-300"
+                ? "md:fixed top-0 md:w-1/3 bg-zinc-300"
                 : fixed
-                ? "fixed top-0 w-1/3"
+                ? "md:fixed top-0 md:w-1/3"
                 : ""
             }`}
             >
@@ -108,7 +108,7 @@ export default function Portfolio(props: any) {
 
           <div
             className={`flex flex-col transition-all ease-in duration-250 ${
-              expanded ? "w-full" : "w-2/3"
+              expanded ? "w-100" : "w-100 md:w-2/3"
             } mt-20 mx-2`}
           >
             {expanded && props.posts ? (
