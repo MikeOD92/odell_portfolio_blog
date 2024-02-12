@@ -18,122 +18,96 @@ export default function BlogPost(props: any) {
       <div className="w-full h-[50vh] md:h-[70vh] lg:h-screen relative flex flex-col justify-items-center pt-10 md:pt-0">
         <Image
           src={props.post.imgs[0].location}
-          // height={1000}
-          // width={1000}
           fill={true}
           style={{
             objectFit: "contain",
           }}
           className="p-5 md:px-24 lg:mt-5"
           quality={100}
-          alt="blog post splash image"
+          alt={props.post.imgs[0].alt}
         />
       </div>
       <div>
         <div>
-          <p className="lg:mt-20 px-5 lg:px-24 text-lg text-justify">
+          <p className="lg:mt-20 px-5 lg:px-24 text-lg text-justify ">
             {props.post.body}
           </p>
-          {props.post.imgs[1] && props.post.body1 ? (
-            <div className="w-full h-1/4 px-5 lg:px-24">
-              <div className="w-full h-full flex justify-start py-10">
-                <Image
-                  src={props.post.imgs[1].location}
-                  height={300}
-                  width={500}
-                  quality={100}
-                  alt="blog image"
-                />
-              </div>
-              <p className="w-full text-lg text-justify">{props.post.body1}</p>
-            </div>
-          ) : props.post.body1 ? (
-            <p className="text-lg text-justify px-5 lg:px-24">
-              {props.post.body1}
-            </p>
-          ) : (
-            ""
-          )}
-          {props.post.imgs[2] && props.post.body2 ? (
-            <div className="w-full h-1/4 px-5 lg:px-24">
-              <div className="w-full h-full flex justify-center py-10">
-                <Image
-                  src={props.post.imgs[2].location}
-                  height={300}
-                  width={500}
-                  quality={100}
-                  alt="blog image"
-                />
-              </div>
-              <p className="w-full text-lg text-justify">{props.post.body2}</p>
-            </div>
-          ) : props.post.body2 ? (
-            <p className="text-lg text-justify px-5 lg:px-24">
-              {props.post.body2}
-            </p>
-          ) : (
-            ""
-          )}
-          {props.post.imgs[3] && props.post.body3 ? (
-            <div className="w-full h-1/4 px-5 lg:px-24">
-              <div className="w-full h-full flex justify-center py-10">
-                <Image
-                  src={props.post.imgs[3].location}
-                  height={300}
-                  width={500}
-                  quality={100}
-                  alt="blog image"
-                />
-              </div>
-              <p className="w-full text-lg text-justify">{props.post.body3}</p>
-            </div>
-          ) : props.post.body3 ? (
-            <p className="text-lg text-justify px-5 lg:px-24">
-              {props.post.body3}
-            </p>
-          ) : (
-            ""
-          )}
-          {props.post.imgs[4] && props.post.body4 ? (
-            <div className="w-full h-1/4 px-5 lg:px-24">
-              <div className="w-full h-full flex justify-center py-10">
-                <Image
-                  src={props.post.imgs[4].location}
-                  height={300}
-                  width={500}
-                  quality={100}
-                  alt="blog image"
-                />
-              </div>
-              <p className="w-full text-lg text-justify">{props.post.body4}</p>
-            </div>
-          ) : props.post.body4 ? (
-            <p className="text-lg text-justify px-5 lg:px-24">
-              {props.post.body4}
-            </p>
-          ) : (
-            ""
-          )}
-          {props.post.imgs[5] && props.post.body5 ? (
-            <div className="w-full h-1/4 px-5 lg:px-24">
-              <div className="w-full h-full flex justify-center py-10">
-                <Image
-                  src={props.post.imgs[5].location}
-                  height={300}
-                  width={500}
-                  quality={100}
-                  alt="blog image"
-                />
-              </div>
-              <p className="w-full text-lg text-justify">{props.post.body5}</p>
-            </div>
-          ) : props.post.body5 ? (
-            <p className="text-lg text-justify px-5 lg:px-24">
-              {props.post.body5}
-            </p>
-          ) : (
-            ""
-          )}
+          <div className={`px-5 lg:px-24 my-10 text-lg text-justify`}>
+            {props.post.body1 ? <p>{props.post.body1}</p> : ""}
+            {props.post.imgs[1] ? (
+              <Image
+                src={props.post.imgs[1].location}
+                height={300}
+                width={500}
+                quality={100}
+                alt={props.post.imgs[1].alt}
+                className={`mt-10 ${
+                  props.post.imgs[1].position === "right"
+                    ? "float-right ml-5"
+                    : "float-left mr-5"
+                }`}
+              />
+            ) : (
+              ""
+            )}
+          </div>
+          <div className={`px-5 lg:px-24 my-10 text-lg text-justify`}>
+            {props.post.body2 ? <p>{props.post.body2}</p> : ""}
+            {props.post.imgs[2] ? (
+              <Image
+                src={props.post.imgs[2].location}
+                height={300}
+                width={500}
+                quality={100}
+                alt={props.post.imgs[2].alt}
+                className={`mt-10 ${
+                  props.post.imgs[2].position === "right"
+                    ? "float-right ml-5"
+                    : "float-left mr-5"
+                }`}
+              />
+            ) : (
+              ""
+            )}
+          </div>
+          <div className={`px-5 lg:px-24 my-10 text-lg text-justify`}>
+            {props.post.body3 ? <p>{props.post.body3}</p> : ""}
+            {props.post.imgs[3] ? (
+              <Image
+                src={props.post.imgs[3].location}
+                height={300}
+                width={500}
+                quality={100}
+                alt={props.post.imgs[3].alt}
+                className={`mt-10 ${
+                  props.post.imgs[3].position === "right"
+                    ? "float-right ml-5"
+                    : "float-left mr-5"
+                }`}
+              />
+            ) : (
+              ""
+            )}
+          </div>
+          <div className={`px-5 lg:px-24 my-10 text-lg text-justify`}>
+            {props.post.body4 ? <p>{props.post.body4}</p> : ""}
+            {props.post.imgs[4] ? (
+              <Image
+                src={props.post.imgs[4].location}
+                height={300}
+                width={500}
+                quality={100}
+                alt={props.post.imgs[4].alt}
+                className={`mt-10 ${
+                  props.post.imgs[4].position === "right"
+                    ? "float-right ml-5"
+                    : "float-left mr-5"
+                }`}
+              />
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       </div>
     </div>
