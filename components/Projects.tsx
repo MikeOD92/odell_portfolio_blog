@@ -11,12 +11,13 @@ export default function Projects(props: any) {
     } else {
       props.setProjectNum(props.i);
       props.setExpanded(!props.expanded);
+      window.scroll(0, 0);
     }
   };
 
   return (
     <div
-      className={`h-full my-2 border-2 m-1 ${
+      className={`hover:cursor-pointer h-full my-2 border-2 m-1 ${
         light ? "border-black" : "border-white"
       }`}
       onClick={() => handleClick()}

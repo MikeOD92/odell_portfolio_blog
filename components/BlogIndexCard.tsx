@@ -7,7 +7,7 @@ export default function BlogIndexCard(props: any) {
     <div
       className={`${props.width} ${props.height}  border-2 text-white ${
         props.light ? "border-black " : "border-white"
-      } my-3 lg:my-0 lg:ml-3`}
+      } my-3 lg:my-0`}
       style={{
         backgroundImage: `url(${props.post.imgs[0].location}`,
         backgroundSize: "cover",
@@ -21,7 +21,7 @@ export default function BlogIndexCard(props: any) {
             props.light
               ? "bg-black/30 hover:bg-black/50 "
               : "bg-black/50 hover:bg-black/20"
-          } text-5xl titletxt`}
+          } text-4xl titletxt`}
         >
           {props.post.title}
         </h3>

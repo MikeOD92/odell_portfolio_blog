@@ -123,10 +123,10 @@ export default function Skills(props: any) {
               <DiPython />
               <p>Python</p>
             </div>
-            <div className="skillsDiv">
+            {/* <div className="skillsDiv">
               <DiRuby />
               <p>Ruby</p>
-            </div>
+            </div> */}
             <div className="skillsDiv">
               <DiNodejsSmall />
               <p>NodeJS</p>
@@ -135,10 +135,10 @@ export default function Skills(props: any) {
               <DiDjango />
               <p>Django</p>
             </div>
-            <div className="skillsDiv">
+            {/* <div className="skillsDiv">
               <SiRubyonrails />
               <p>Ruby on Rails</p>
-            </div>
+            </div> */}
             <div className="skillsDiv">
               <DiDocker />
               <p>Docker</p>

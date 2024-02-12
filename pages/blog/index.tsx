@@ -119,7 +119,7 @@ export default function App(props: any) {
                 alt="author portait"
                 width={150}
                 height={150}
-                className={`rounded-full object-contain border-2 bg-none hidden md:block ${
+                className={`rounded-full object-contain border-2 bg-none m-2 hidden md:block ${
                   props.light ? "border-black " : "border-white "
                 }`}
               />
@@ -171,12 +171,12 @@ export default function App(props: any) {
           )}
         </div>
       </div>
-      <div className="h-screen px-2.5 mt-5 hidden lg:grid grid-cols-4 grid-rows-2 gap-5">
+      <div className="h-screen w-100 px-5 mt-5 hidden lg:grid grid-cols-4 auto-rows-[20vw] gap-5">
         {showPosts.slice(3).map((itm: any, i: number) => {
           return (
             <BlogIndexCard
               post={itm}
-              width="w-full"
+              width="w-100"
               key={`blogPost${i}`}
               light={props.light}
             />

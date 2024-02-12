@@ -29,13 +29,15 @@ export default function ProjectExpanded(props: any) {
 
   return (
     <div
-      className={`h-[85vh] md:h-full m-2 border-2 overflow-scroll md:overflow-wrap scrollDisplay ${
+      className={`h-contain m-2 border-2 scrollDisplay text-pretty ${
         light ? "border-black bg-zinc-100" : "border-white bg-black"
       }`}
     >
       <div className={`p-5 round-md ${light ? "text-black" : ""}`}>
         <div className="flex flex-row justify-between">
-          <h3 className="displaytxt text-4xl mb-2 ">{props.post.title}</h3>
+          <h3 className="displaytxt text-3xl lg:text-4xl mb-2 ">
+            {props.post.title}
+          </h3>
           <button className="p-25 text-4xl" onClick={() => handleClick()}>
             <IoMdClose />
           </button>
@@ -50,7 +52,7 @@ export default function ProjectExpanded(props: any) {
         >
           {props.post.imgs.length > 1 ? (
             <MdChevronLeft
-              className="m-20 text-7xl"
+              className="lg:m-20 text-5xl lg:text-7xl"
               onClick={() => handleCaroClick(false)}
             />
           ) : (
@@ -58,14 +60,14 @@ export default function ProjectExpanded(props: any) {
           )}
           <Image
             src={props.post.imgs[caroImg].location}
-            width="1000"
-            height="1000"
+            width="2000"
+            height="2000"
             alt={`portfolio image of ${props.post.title}`}
-            className="w-2/3 mb-5 p-30"
+            className="w-3/4 lg:w-2/3 mb-5 p-30"
           />
           {props.post.imgs.length > 1 ? (
             <MdChevronRight
-              className="m-20 text-7xl"
+              className="lg:m-20 text-5xl lg:text-7xl"
               onClick={() => handleCaroClick(true)}
             />
           ) : (
