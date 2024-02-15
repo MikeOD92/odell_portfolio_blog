@@ -143,7 +143,7 @@ export default function App(props: any) {
             {showPosts[0] ? (
               <BlogIndexCard
                 post={showPosts[0]}
-                width={"w-full"}
+                width={"w-1/2 mr-3"}
                 light={props.light}
               />
             ) : (
@@ -152,7 +152,7 @@ export default function App(props: any) {
             {showPosts[1] ? (
               <BlogIndexCard
                 post={showPosts[1]}
-                width={"w-full"}
+                width={"w-1/2"}
                 light={props.light}
               />
             ) : (

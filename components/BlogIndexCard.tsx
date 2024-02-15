@@ -19,9 +19,9 @@ export default function BlogIndexCard(props: any) {
         <h3
           className={`p-5 h-full w-full   ${
             props.light
-              ? "bg-black/30 hover:bg-black/50 "
-              : "bg-black/50 hover:bg-black/20"
-          } text-4xl titletxt`}
+              ? "bg-black/50 hover:bg-black/20 "
+              : "bg-black/50 hover:bg-black/30"
+          } text-3xl titletxt`}
         >
           {props.post.title}
         </h3>

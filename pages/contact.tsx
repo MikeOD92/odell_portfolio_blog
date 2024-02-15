@@ -30,19 +30,24 @@ export default function contact(props: any) {
         }`}
       >
         <div
-          className={`mt-24 px-24 p-16 w-2/3 ${
+          className={`mt-24 px-2 md:px-24 pt-16 w-[90vw] md:w-2/3 ${
             light ? "border-black" : "border-white"
           } border-2`}
         >
           <h2 className="titletxt text-6xl">Contact</h2>
-          <ul className="text-4xl tracking-wide leading-loose py-5">
+          <ul className="text-4xl tracking-wide leading-relaxed md:leading-loose py-5">
             <li className="displaytxt">
               Email :{" "}
-              <span className="titletxt">michaelodell660@gmail.com</span>
+              <span className="titletxt text-2xl text-wrap">
+                michaelodell660@gmail.com
+              </span>
             </li>
             <li>
               <Link href="https://github.com/MikeOD92" className="displaytxt">
-                GitHub: <span className="titletxt">github.com/MikeOD92</span>
+                GitHub:{" "}
+                <span className="titletxt text-2xl text-wrap">
+                  github.com/MikeOD92
+                </span>
               </Link>
             </li>
             <li>
@@ -51,9 +56,17 @@ export default function contact(props: any) {
                 className="displaytxt"
               >
                 LinkedIn:{" "}
-                <span className="titletxt">
-                  www.linkedin.com/in/michaelodell92
+                <span className="titletxt text-2xl text-wrap">
+                  linkedin.com/in/michaelodell92
                 </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="https://docs.google.com/document/d/1A7Ac8PemqpVTycBOeGsvwEzN8aWJRJWRjj3i42YHpeM/edit"
+                className="displaytxt"
+              >
+                Resume
               </Link>
             </li>
           </ul>
