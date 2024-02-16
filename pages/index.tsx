@@ -65,7 +65,7 @@ const Home = (props: any) => {
                     : { x: 0, transition: { duration: 1 } }
                 }
               >
-                <a href="/contact">
+                <Link href="/contact">
                   <div
                     className={`w-1/3 mt-5 border-2 ${
                       light
@@ -75,7 +75,7 @@ const Home = (props: any) => {
                   >
                     <p className="text-2xl md:text-3xl titletxt">Contact</p>
                   </div>
-                </a>
+                </Link>
               </motion.div>
             </div>
           </div>
