@@ -30,16 +30,17 @@ export default function about(props: any) {
           } rounded-r-2xl mb-5`}
         >
           <h2 className="text-xl md:text-2xl">
-            Hello, welcome to my yet unnamed blog and thank you for clicking on
-            the about me post.
+            Hello, welcome to Odd Parts. Odd Parts is a blog where I will be
+            writing about my tech projects and thing I&apos;ve learned as
+            I&apos;ve explored and worked in linux and web development.
           </h2>
           <br />
           <br />
           <p>
             My name is O&apos;Dell and I am a web developer, Linux enthusiast,
-            and artist. In my free time I am an avid hiker, climber and cyclist
-            and I love making things. I have a background in the arts and
-            achieved my BFA from CUNY Hunter College in NYC in 2015 with a focus
+            and artist with a strong DIY ethos. In my free time I am an avid
+            hiker, climber and cyclist. I have a background in the arts and
+            achieved my BFA at CUNY Hunter College in NYC in 2015 with a focus
             in video and sculpture. After this I spent a good 5 months hiking
             the 2650 mile Pacific Crest Trail from Mexico to Canada, in 2018 I
             hit the trails again to hike the Pacific Northwest Trail, 1200 miles
@@ -57,30 +58,48 @@ export default function about(props: any) {
             things that interest me and creating tutorials. I&apos;ll be taking
             about things like software packages I&apos;m using, developing with
             NextJS, Python programing, I&apos;ll do some Linux distro reviews,
-            I&apos;ll do an in-depth Arch install tutorial, and I&apos;ll talk
-            about running web servers and other services on linux machines. I
-            will mostly use RedHat CentOS and maybe NixOS for running services
-            and focus on Arch based distros for going into gaming and running a
-            daily driver / development environment.
+            an in-depth Arch install tutorial, and I&apos;ll talk about running
+            web servers and other services on linux machines. I mostly use
+            RedHat CentOS and Rocky Linux for running services and focus on Arch
+            based distros for going into gaming and running a daily driver /
+            development environment.
           </p>
           <br />
-          <p>Some of my upcoming projects I will be writing about include:</p>
+          <p>Some of my upcoming things I will be writing about include:</p>
           <br />
           <ul className="list-disc pl-5">
+            <li>Generating SSL certificates with Let&apos;s Encrypt</li>
             <li>
-              moving this website over to a fully self hosted linux setup.
+              How I set up my Arch linux desktop with i3, terminator, and more.
             </li>
             <li>
               Building an automated mushroom fruiting chamber with some friends
-              that will include humidity sensors, some raspberry pi ( my first
-              toe dipping into IoT stuff ) and some carpentry.
+              that will include humidity sensors, some raspberry pi and some
+              carpentry.
             </li>
-            <li>building myself a new PC</li>
+            <li>building myself a new PC.</li>
             <li>
-              Building a at home cloud storage server using SFTP and maybe a
-              docker program to use as a client.
+              Building a at home cloud storage server using SFTP and a easy to
+              use client.
+            </li>
+            <li>
+              Looking at 3JS, Blender and teaching myself some C++ to use
+              OpenFrameWorks.
+            </li>
+            <li>
+              Using a variaty of Python Frameworks such as, Django, Flask and
+              FastAPI.
+            </li>
+            <li>
+              Creating a media center with a mini PC running linux and hosting a
+              Jellyfin server for streaming my video collection.
             </li>
           </ul>
+          <br />
+          <p>
+            I hope you can find some information that will be useful or
+            something that might inspire your next project.
+          </p>
         </div>
       </div>
     </div>
