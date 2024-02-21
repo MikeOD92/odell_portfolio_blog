@@ -62,7 +62,7 @@ export default function ProjectExpanded(props: any) {
             src={props.post.imgs[caroImg].location}
             width="2000"
             height="2000"
-            alt={`portfolio image of ${props.post.title}`}
+            alt={`${props.post.imgs[caroImg].alt}`}
             className="w-3/4 lg:w-2/3 mb-5 p-30"
           />
           {props.post.imgs.length > 1 ? (

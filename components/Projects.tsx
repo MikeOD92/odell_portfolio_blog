@@ -36,7 +36,7 @@ export default function Projects(props: any) {
           src={props.post.imgs[0].location}
           width="2000"
           height="2000"
-          alt={`portfolio image of ${props.post.title}`}
+          alt={`${props.post.imgs[0].alt}`}
           className="w-full mb-5"
         />
         <p>{props.post.des}</p>
