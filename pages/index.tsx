@@ -32,7 +32,7 @@ const Home = (props: any) => {
           className={`w-full h-screen ${light ? "text-black" : "text-white"}`}
         >
           <div>
-            <div className="relative top-[20vh] md:absolute top-1/4 md:top-1/3 mx-10 md:left-24 z-10">
+            <div className="relative top-[10vh] md:absolute top-1/4 md:top-1/3 mx-4 md:mx-5 md:left-24 z-10">
               <motion.div
                 animate={
                   startAnimation
@@ -49,10 +49,10 @@ const Home = (props: any) => {
                 <div
                   className={`border-2 ${
                     light ? "border-black" : "border-zinc-200"
-                  } p-5`}
+                  } p-3 md:p-5`}
                 >
                   <h1 className="text-6xl titletxt"> Michael O&apos;Dell</h1>
-                  <h2 className="text-4xl displaytxt ">
+                  <h2 className="text-3xl md:text-4xl displaytxt ">
                     Web Developer | Artist
                   </h2>
                 </div>
@@ -71,7 +71,7 @@ const Home = (props: any) => {
                       light
                         ? "border-black hover:bg-black hover:text-white"
                         : "border-zinc-200 hover:bg-white hover:text-black"
-                    } p-5`}
+                    } p-3 md:p-5`}
                   >
                     <p className="text-2xl md:text-3xl titletxt">Contact</p>
                   </div>
