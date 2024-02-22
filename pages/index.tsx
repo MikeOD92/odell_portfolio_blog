@@ -32,7 +32,7 @@ const Home = (props: any) => {
           className={`w-full h-screen ${light ? "text-black" : "text-white"}`}
         >
           <div>
-            <div className="relative top-[10vh] md:absolute top-1/4 md:top-1/3 mx-4 md:mx-5 md:left-24 z-10">
+            <div className="relative top-[12vh] md:absolute top-1/4 md:top-1/3 mx-4 md:mx-5 md:left-24 z-10">
               <motion.div
                 animate={
                   startAnimation
@@ -67,7 +67,7 @@ const Home = (props: any) => {
               >
                 <Link href="/contact">
                   <div
-                    className={`w-1/3 mt-5 border-2 ${
+                    className={`w-1/2 sm:w-1/3 mt-5 border-2 ${
                       light
                         ? "border-black hover:bg-black hover:text-white"
                         : "border-zinc-200 hover:bg-white hover:text-black"
