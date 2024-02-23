@@ -22,6 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
         light ? "bg-gradient-to-b from-zinc-100 to-zinc-400" : "bg-black"
       }
     >
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <motion.div
         className="fixed z-20"
         onClick={() => (startAnimation === false ? setlight(!light) : "")}

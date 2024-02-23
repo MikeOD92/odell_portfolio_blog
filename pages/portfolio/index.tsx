@@ -37,7 +37,7 @@ export default function Portfolio(props: any) {
 
   return (
     <div
-      className={`h-full ${
+      className={`h-full w-[100vw]${
         light
           ? "bg-gradient-to-b from-zinc-100 to-zinc-300 text-black"
           : "bg-black text-white"
@@ -48,7 +48,7 @@ export default function Portfolio(props: any) {
       </Link>
 
       <div
-        className={`flex flex-row ${
+        className={`w-[100vw] flex flex-row ${
           light ? "bg-gradient-to-b from-zinc-100 to-zinc-300" : "bg-black"
         }`}
       >

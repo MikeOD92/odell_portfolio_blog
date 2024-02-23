@@ -7,7 +7,7 @@ export default function contact(props: any) {
   return (
     <div>
       <div
-        className={`h-full w-full ${
+        className={`h-full w-[100vw] ${
           light
             ? "bg-gradient-to-b from-zinc-100 to-zinc-300"
             : "bg-black text-white"
@@ -23,7 +23,7 @@ export default function contact(props: any) {
         </Link>
       </div>
       <div
-        className={`h-screen flex flex-col items-center ${
+        className={`h-screen w-[100vw] flex flex-col items-center ${
           light
             ? "bg-gradient-to-b from-zinc-100 to-zinc-300 text-black"
             : "bg-black text-white"
@@ -37,15 +37,15 @@ export default function contact(props: any) {
           <h2 className="titletxt text-6xl">Contact</h2>
           <ul className="text-4xl tracking-wide leading-relaxed md:leading-loose py-5">
             <li className="displaytxt">
-              Email :{" "}
-              <span className="titletxt text-2xl text-wrap">
+              Email : <br className="lg:hidden" />
+              <span className="titletxt text-sm md:text-lg lg:text-xl text-wrap">
                 michaelodell660@gmail.com
               </span>
             </li>
             <li>
               <Link href="https://github.com/MikeOD92" className="displaytxt">
-                GitHub:{" "}
-                <span className="titletxt text-2xl text-wrap">
+                GitHub: <br className="lg:hidden" />
+                <span className="titletxt text-sm md:text-lg lg:text-xl text-wrap">
                   github.com/MikeOD92
                 </span>
               </Link>
@@ -55,8 +55,8 @@ export default function contact(props: any) {
                 href="https://www.linkedin.com/in/michaelodell92/"
                 className="displaytxt"
               >
-                LinkedIn:{" "}
-                <span className="titletxt text-2xl text-wrap">
+                LinkedIn: <br className="lg:hidden" />
+                <span className="titletxt text-sm md:text-lg lg:text-xl text-wrap">
                   linkedin.com/in/michaelodell92
                 </span>
               </Link>

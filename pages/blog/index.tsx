@@ -27,7 +27,7 @@ export default function App(props: any) {
   return (
     <div>
       <div
-        className={`fixed w-full pt-2 pl-20 ${
+        className={`fixed w-[100vw] pt-2 pl-20 ${
           props.light
             ? "bg-zinc-200 border-2 border-b-black"
             : "bg-black border-b-2 border-b-white"
@@ -38,7 +38,7 @@ export default function App(props: any) {
             props.light ? "text-black" : "text-white"
           } flex flex-row lg:justify-end`}
         >
-          <div className="w-full flex flex-row justify-around pt-2">
+          <div className="w-[100vw] flex flex-row justify-around pt-2">
             <a
               className={`hoverDisplay hidden md:block ${
                 filter === "linux" ? "underline decoration-2" : ""
@@ -84,7 +84,7 @@ export default function App(props: any) {
           </Link>
         </div>
       </div>
-      <div className="flex flex-col lg:flex-row px-5 pt-24 h-full box-border">
+      <div className="flex flex-col lg:flex-row px-5 pt-24 h-full w-[100vw] box-border">
         <div className="w-full lg:w-1/2 xl:w-3/4 flex flex-col">
           <div
             className={`lg:h-2/3 mb-5 border-2 text-white ${
@@ -99,7 +99,7 @@ export default function App(props: any) {
               } p-10`}
             >
               Odd Parts: <br />
-              <span className="displaytxt">
+              <span className="displaytxt text-2xl md:text-5xl">
                 Linux, Web Development, Art & Tech
               </span>
             </h2>
@@ -112,7 +112,7 @@ export default function App(props: any) {
                 : "border-white text-white hover:bg-gradient-to-t hover:from-[#4c483e]/50 hover:to-transparent"
             } p-5 flex flex-row justify-between items-center`}
           >
-            <h4 className="text-5xl p-5 titletxt">Hello_World</h4>
+            <h4 className="text-2xl md:text-5xl p-5 titletxt">Hello_World</h4>
             <div>
               <Image
                 src="/img/odell.jpg"

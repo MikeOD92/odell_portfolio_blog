@@ -10,6 +10,8 @@ export default function Document() {
         />
       </Head>
       <body>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
         <Main />
         <NextScript />
       </body>
