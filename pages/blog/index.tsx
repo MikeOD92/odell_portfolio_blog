@@ -87,7 +87,7 @@ export default function App(props: any) {
       <div className="flex flex-col lg:flex-row px-5 pt-24 h-full w-[100vw] box-border">
         <div className="w-full lg:w-1/2 xl:w-3/4 flex flex-col">
           <div
-            className={`lg:h-2/3 mb-5 border-2 text-white ${
+            className={`lg:h-2/3 my-5 border-2 text-white ${
               props.light ? "border-black" : "border-white"
             }`}
           >
@@ -112,7 +112,7 @@ export default function App(props: any) {
                 : "border-white text-white hover:bg-gradient-to-t hover:from-[#4c483e]/50 hover:to-transparent"
             } p-5 flex flex-row justify-between items-center`}
           >
-            <h4 className="text-2xl md:text-5xl p-5 titletxt">Hello_World</h4>
+            <h4 className="text-3xl md:text-5xl p-5 titletxt">Hello_World</h4>
             <div>
               <Image
                 src="/img/odell.jpg"
@@ -138,7 +138,7 @@ export default function App(props: any) {
             );
           })}
         </div>
-        <div className="w-1/2 lg:flex flex-col ml-3 hidden ">
+        <div className="w-1/2 lg:flex flex-col ml-3 hidden my-5">
           <div className="flex flex-row h-1/2 mb-5">
             {showPosts[0] ? (
               <BlogIndexCard

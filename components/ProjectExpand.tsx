@@ -35,7 +35,7 @@ export default function ProjectExpanded(props: any) {
     >
       <div className={`p-5 round-md ${light ? "text-black" : ""}`}>
         <div className="flex flex-row justify-between">
-          <h3 className="displaytxt text-3xl lg:text-4xl mb-2 ">
+          <h3 className="displaytxt md:text-3xl lg:text-4xl mb-2 ">
             {props.post.title}
           </h3>
           <button className="p-25 text-4xl" onClick={() => handleClick()}>

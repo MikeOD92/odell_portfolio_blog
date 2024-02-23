@@ -27,7 +27,7 @@ export default function Projects(props: any) {
           light ? "text-black bg-zinc-100" : "bg-black"
         }`}
       >
-        <h3 className="displaytxt text-4xl mb-2 ">{props.post.title}</h3>
+        <h3 className="displaytxt md:text-4xl mb-2 ">{props.post.title}</h3>
 
         {/* should be a multi img 
               maybe as we build this out we want to make a stand along componenet */}
