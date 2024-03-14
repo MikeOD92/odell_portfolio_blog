@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { prisma } from "../api/db";
-import BlogNavBar from "@/components/BlogNavBar";
+// import { prisma } from "../../pages/api/db";
+import BlogNavBar from "../../../components/BlogNavBar";
 
 export default function BlogPost(props: any) {
   return (
@@ -113,11 +113,11 @@ export default function BlogPost(props: any) {
     </div>
   );
 }
-export const getServerSideProps = async (context: any) => {
-  let post = await prisma.post.findUnique({
-    where: { id: parseInt(context.params.id) },
-    include: { imgs: true },
-  });
-  post = JSON.parse(JSON.stringify(post));
-  return { props: { post } };
-};
+// export const getServerSideProps = async (context: any) => {
+//   let post = await prisma.post.findUnique({
+//     where: { id: parseInt(context.params.id) },
+//     include: { imgs: true },
+//   });
+//   post = JSON.parse(JSON.stringify(post));
+//   return { props: { post } };
+// };

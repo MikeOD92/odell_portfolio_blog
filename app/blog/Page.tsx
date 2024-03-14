@@ -1,10 +1,10 @@
 import type { AppProps } from "next/app";
 import react, { useState, useRef, useEffect } from "react";
-import { prisma } from "../api/db";
+import { prisma } from "../../pages/api/db";
 import { Gi3DStairs } from "react-icons/gi";
 import Link from "next/link";
 import Image from "next/image";
-import BlogIndexCard from "@/components/BlogIndexCard";
+import BlogIndexCard from "../../components/BlogIndexCard";
 
 export default function App(props: any) {
   const posts = props.posts;
