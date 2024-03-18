@@ -1,10 +1,10 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import Image from "next/image";
+// import Image from "next/image";
 
 export default function HomePageBlogCard(props: any) {
-  // console.log("////// props in blog card", props);
   return (
     <motion.div
       initial={{ opacity: 0 }}

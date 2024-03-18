@@ -1,6 +1,4 @@
-import type { AppProps } from "next/app";
-import react, { useState } from "react";
-import { IconContext } from "react-icons";
+"use client";
 import {
   SiAdobeillustrator,
   SiAdobephotoshop,

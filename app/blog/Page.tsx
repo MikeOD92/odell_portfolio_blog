@@ -1,6 +1,6 @@
-import type { AppProps } from "next/app";
-import react, { useState, useRef, useEffect } from "react";
-import { prisma } from "../../pages/api/db";
+"use client";
+import React, { useState, useRef, useEffect } from "react";
+// import { prisma } from "../../pages/api/db";
 import { Gi3DStairs } from "react-icons/gi";
 import Link from "next/link";
 import Image from "next/image";
@@ -186,16 +186,16 @@ export default function App(props: any) {
     </div>
   );
 }
-export const getServerSideProps = async () => {
-  let posts = await prisma.post.findMany({
-    include: {
-      imgs: true,
-      tags: { select: { tag: true } },
-    },
-  });
-  posts.reverse();
+// export const getServerSideProps = async () => {
+//   let posts = await prisma.post.findMany({
+//     include: {
+//       imgs: true,
+//       tags: { select: { tag: true } },
+//     },
+//   });
+//   posts.reverse();
 
-  posts = JSON.parse(JSON.stringify(posts));
+//   posts = JSON.parse(JSON.stringify(posts));
 
-  return { props: { posts } };
-};
+//   return { props: { posts } };
+// };

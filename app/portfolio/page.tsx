@@ -1,15 +1,26 @@
-import type { AppProps } from "next/app";
-import react, { useState, useEffect, useRef } from "react";
-import Image from "next/image";
+"use client";
+import React, { useState, useEffect, useRef } from "react";
 import Skills from "../../components/Skills";
-import Projects from "@/components/Projects";
-import ProjectExpanded from "@/components/ProjectExpand";
+import Projects from "../../components/Projects";
+import ProjectExpanded from "../../components/ProjectExpand";
 import { Gi3DStairs } from "react-icons/gi";
 import Link from "next/link";
 import { useScroll, useMotionValueEvent, useInView } from "framer-motion";
-import { prisma } from "../api/db";
-export default function Portfolio(props: any) {
+import { prisma } from "../../lib/db";
+
+async function getProjects() {
+  let projects = await prisma.project.findMany({
+    include: { imgs: true },
+  });
+  projects.reverse();
+  projects = await JSON.parse(JSON.stringify(projects));
+  return projects;
+}
+
+export default async function Portfolio(props: any) {
+  const projects = await getProjects();
   let light = props.light;
+
   const northRef = useRef(null);
   const southRef = useRef(null);
 
@@ -20,11 +31,6 @@ export default function Portfolio(props: any) {
   const [expanded, setExpanded] = useState(false);
   const [projectNum, setProjectNum] = useState(0);
 
-  // const handleExpansion = (e: Event, i: Number) => {
-  //   e.preventDefault();
-  //   // setProjectNum(i);
-  //   setExpanded(true);
-  // };
   useEffect(() => {
     if (!north && south) {
       setFixed(true);
@@ -141,12 +147,12 @@ export default function Portfolio(props: any) {
     </div>
   );
 }
-export const getServerSideProps = async () => {
-  const posts = (
-    await prisma.project.findMany({
-      include: { imgs: true },
-    })
-  ).reverse();
+// export const getServerSideProps = async () => {
+//   const posts = (
+//     await prisma.project.findMany({
+//       include: { imgs: true },
+//     })
+//   ).reverse();
 
-  return { props: { posts } };
-};
+//   return { props: { posts } };
+// };

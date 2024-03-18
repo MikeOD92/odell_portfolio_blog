@@ -1,6 +1,6 @@
-import "@/styles/globals.css";
-import type { AppProps } from "next/app";
-import react, { useState } from "react";
+"use client";
+import "../styles/globals.css";
+import React, { useState } from "react";
 import { BsToggleOn, BsToggleOff } from "react-icons/bs";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 

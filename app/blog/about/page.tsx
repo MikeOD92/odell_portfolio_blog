@@ -1,5 +1,5 @@
 import Image from "next/image";
-import BlogNavBar from "../../components/BlogNavBar";
+import BlogNavBar from "../../../components/BlogNavBar";
 export default function about(props: any) {
   return (
     <div>
