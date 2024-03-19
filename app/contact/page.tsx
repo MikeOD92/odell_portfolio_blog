@@ -6,7 +6,7 @@ export default function contact(props: any) {
   let light = props.light;
   return (
     <div>
-      <div
+      {/* <div
         className={`h-full w-[100vw] ${
           light
             ? "bg-gradient-to-b from-zinc-100 to-zinc-300"
@@ -21,7 +21,7 @@ export default function contact(props: any) {
         >
           <Gi3DStairs />
         </Link>
-      </div>
+      </div> */}
       <div
         className={`h-screen w-[100vw] flex flex-col items-center ${
           light

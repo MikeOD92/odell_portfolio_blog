@@ -2,9 +2,11 @@
 import React from "react";
 import Link from "next/link";
 import { prisma } from "../lib/db";
-import HomePageProjectCard from "../components/HomePageProjectCard";
-import HomePageBlogCard from "../components/HomePageBlogCard";
-import HomePageSplash from "../components/HomePageSplash";
+import HomePageProjectCard from "../components/home/HomePageProjectCard";
+import HomePageBlogCard from "../components/home/HomePageBlogCard";
+import HomePageSplash from "../components/home/HomePageSplash";
+import MainNav from "../components/MainNav";
+import "../styles/globals.css";
 
 async function getPosts() {
   let posts = await prisma.post.findMany({
@@ -23,10 +25,10 @@ async function getProjects() {
   return projects;
 }
 
-export default async function Page(props: any) {
-  let light = props.light;
+export default async function Page() {
   const posts = await getPosts();
   const projects = await getProjects();
+  const light = false; // temp stand in for light mode state
 
   return (
     <div
@@ -36,12 +38,14 @@ export default async function Page(props: any) {
           : "bg-black text-white"
       }`}
     >
+      <MainNav display={false} />
       <HomePageSplash light={light} />
-      <div className="lg:h-screen w-full flex flex-col md:flex-row pt-5">
+      <div className="lg:h-full w-full flex flex-col md:flex-row pt-5">
+        {/* hight is set here and the overflow in the child elements, its not behaving how i want  */}
         <div className="text-5xl text-center p-5 w-full h-full flex md:flex-col">
           <Link href="/blog" className="w-full">
             <h3
-              className={`titletxt w-full border-2 ${
+              className={`font-raleway w-full border-2 ${
                 light ? "text-black border-black" : "text-white border-zinc-200"
               } ${
                 light
@@ -52,7 +56,7 @@ export default async function Page(props: any) {
               Blog
             </h3>
           </Link>
-          <div className="overflow-auto hidden md:block scrollDisplay">
+          <div className="overflow-scroll hidden md:block scrollDisplay">
             {posts.map((post: any, i: Number) => {
               return (
                 <HomePageBlogCard
@@ -64,7 +68,7 @@ export default async function Page(props: any) {
             })}
           </div>
         </div>
-        <div className="text-5xl text-center p-5 w-full h-full flex flex-col justify-between items-center">
+        <div className="text-5xl text-center p-5 w-full h-full flex md:flex-col">
           <Link href="/portfolio" className="w-full">
             <h3
               className={`titletxt border-2 ${
@@ -73,12 +77,12 @@ export default async function Page(props: any) {
                 light
                   ? "hover:bg-black hover:text-white"
                   : "hover:bg-zinc-300 hover:text-black hover:border-black"
-              } p-5  mb-10`}
+              } p-5 mb-10`}
             >
               Web Portfolio
             </h3>
           </Link>
-          <div className="overflow-auto hidden md:block scrollDisplay">
+          <div className="hidden md:block scrollDisplay">
             {projects.map((project: any, i: Number) => {
               return (
                 <HomePageProjectCard key={`img ${i}`} img={project.imgs[0]} />
@@ -87,7 +91,6 @@ export default async function Page(props: any) {
           </div>
         </div>
       </div>
-      <span id="bottom" />
     </div>
   );
 }
