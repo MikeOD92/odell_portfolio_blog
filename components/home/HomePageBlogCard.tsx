@@ -14,12 +14,12 @@ export default function HomePageBlogCard(props: any) {
       <div
         className={`mb-3 text-white bg-black`}
         style={{
-          backgroundImage: `url(${props.post.imgs[0].location})`,
+          backgroundImage: `url(${props.post.splash})`,
           backgroundPosition: "top",
           backgroundSize: "cover",
         }}
       >
-        <Link href={`/blog/${props.post.id}`}>
+        <Link href={`/blog/${props.post.slug}`}>
           <h1
             className={`text-center h-full w-full ${
               props.light

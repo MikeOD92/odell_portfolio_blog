@@ -2,20 +2,21 @@
 import React from "react";
 import Link from "next/link";
 import { prisma } from "../lib/db";
+import { getAllPosts } from "../lib/staticPostsUtil";
 import HomePageProjectCard from "../components/home/HomePageProjectCard";
 import HomePageBlogCard from "../components/home/HomePageBlogCard";
 import HomePageSplash from "../components/home/HomePageSplash";
 import MainNav from "../components/MainNav";
 import "../styles/globals.css";
 
-async function getPosts() {
-  let posts = await prisma.post.findMany({
-    include: { imgs: true },
-  });
-  posts.reverse();
-  posts = JSON.parse(JSON.stringify(posts));
-  return posts;
-}
+// async function getPosts() {
+//   let posts = await prisma.post.findMany({
+//     include: { imgs: true },
+//   });
+//   posts.reverse();
+//   posts = JSON.parse(JSON.stringify(posts));
+//   return posts;
+// }
 async function getProjects() {
   let projects = await prisma.project.findMany({
     include: { imgs: true },
@@ -26,7 +27,7 @@ async function getProjects() {
 }
 
 export default async function Page() {
-  const posts = await getPosts();
+  const posts = getAllPosts()[0];
   const projects = await getProjects();
   const light = false; // temp stand in for light mode state
 

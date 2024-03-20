@@ -58,7 +58,13 @@ export default function BlogGridDisplay(props: any) {
             </div>
           </Link>
         </div>
-        <div className="lg:hidden flex flex-col">
+        <BlogIndexCard
+          post={posts[0]}
+          width="w-full"
+          key={`blogPost${0}`}
+          light={light}
+        />
+        {/* <div className="lg:hidden flex flex-col">
           {filterPosts.map((itm: any, i: number) => {
             return (
               <BlogIndexCard
@@ -113,7 +119,7 @@ export default function BlogGridDisplay(props: any) {
               light={props.light}
             />
           );
-        })}
+        })} */}
       </div>
     </div>
   );
