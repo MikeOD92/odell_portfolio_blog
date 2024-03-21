@@ -18,12 +18,13 @@ export function getAllPosts() {
     list.unshift(data);
   });
 
-  return [list];
+  return list;
 }
 
 export function getPost(url: string) {
   const allPosts = fs.readdirSync(contentDirectory);
-  const post = allPosts.filter((fileName) => {
+  let post: any;
+  post = allPosts.filter((fileName) => {
     const slug = fileName.replace(".mdx", "");
     if (url === slug) {
       const fileContents = fs.readFileSync(
@@ -31,7 +32,9 @@ export function getPost(url: string) {
         "utf8"
       );
       const { data } = matter(fileContents);
-      return { data };
+      post = data;
     }
   });
+  console.log(post);
+  return post;
 }

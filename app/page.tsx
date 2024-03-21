@@ -27,7 +27,7 @@ async function getProjects() {
 }
 
 export default async function Page() {
-  const posts = getAllPosts()[0];
+  const posts = getAllPosts();
   const projects = await getProjects();
   const light = false; // temp stand in for light mode state
 
