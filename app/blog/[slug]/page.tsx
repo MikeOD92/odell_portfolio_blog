@@ -5,7 +5,7 @@ import { getPostData } from "../../../lib/blogFunctions";
 import { Metadata } from "next";
 
 export async function generateStaticParams() {
-  const blogPosts = ["howto_flask", "sslwithcertbot"];
+  const blogPosts = ["howto_flask", "certbot_tutorial"];
   return blogPosts.map((post) => ({
     slug: post,
   }));
@@ -37,8 +37,8 @@ export default async function Page({ params }: BlogPageProps) {
       <MainNav display={true} fixed={false} />
       <div className="px-10 pt-5">
         <article
-          className="prose max-w-fit md:prose-lg p-20 md:p-10
-        bg-slate-200"
+          className="prose prose-neutral max-w-fit md:prose-lg p-20 md:p-10
+        bg-slate-300"
         >
           <Page />
         </article>

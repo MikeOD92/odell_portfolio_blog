@@ -1,0 +1,119 @@
+export const metadata = {
+  title: "SSL Certificates With Certbot",
+  summary:
+    "What are SSL certificates, Why do we need them and how can we generate them?",
+  splash: "/img/ssltutorialDesktop.png",
+  slug: "certbot_tutorial",
+  date: "03-27-2024",
+  tags: ["backEnd", "linux"],
+};
+
+---
+
+# SSL Certificates With Certbot
+
+### {metadata.summary}
+
+published: _{metadata.date}_
+
+---
+
+![gnome desktop with let's encrypt and certbot logos](/img/ssltutorialDesktop.png)
+
+What are SSL certificates, Why do we need them and how can we generate them?
+
+SSL or Secure Sockets Layer is a web protocol used to establish a secure encrypted connection between a website and users visiting that website. This works by the client (user) and the server (website) performing a “handshake”. In this “handshake” the server provides its public key which the client browser then uses to verify the server’s SSL certificate. Once this handshake is completed successfully the two establish a secure connection and the website can be accessed via https. One will often see this described as SSL/TLS, TLS (Transport Layer Security) is a more secure and updated version of the SSL protocol which has technically replaced SSL. Most people use the term SSL when they are actually referring to SSL/TLS and for simplicity sake I will do that in this blog post as well.
+
+But why is https important? Really most of the time you are online you are probably connected via https and don’t even notice, if you look at your address bar and see a little lock icon next to the name of the website you are visiting you are connected with HTTPs. Having these secure connections are important for a number of reasons. The two biggest being to protect personal information that may be exchanged on the site from a variety of common cyber attacks and secondly to ensure your website can be accessed in all modern browsers (many web browsers today will not allow you to visit unsecured sites without at least a warning).
+
+Many hosting providers include SSL certificates for free with your hosting package but there are still some that do not. I came across a situation where SSL was not provided recently and decided to see if there were any free and open source tools I could use to solve this problem. After doing a little research I came across Let's Encrypt and Certbot. Let’s Encrypt is an open source certificate authority (CA) provided by The Internet Security Research Group and Certbot is an open source software tool provided by the Electronic Frontier Foundation that allows users to generate SSL/TLS certificates with the Let’s Encrypt CA and enable HTTPS on their websites for free.
+
+In my situation I was using a cloud-hosted server which I did not have access to via SSH and lacked sudo privileges, instead I had cPanel. On Certbot’s website they say you should have these things, ssh and sudo, but there is a manual way to do this. Certbot provides easier methods to do this and the ability to automate the process if you are hosting your own web server or have SSH and sudo but you can still use it without these things in the ‘manual mode’. I’ll be going over the manual process here and talking about how to install on cPanel. First let's install Certbot on your machine.
+
+## PART 1: Installation
+
+**Linux: Arch and Redhat**
+
+Depending on your system there are a few different ways to do this. For me running an arch based distribution Certbot is included in the extra repo and can be installed with the pacman package manager. First update your system with and then install.
+
+```
+sudo pacman -Syu
+sudo pacman -S certbot
+```
+
+With a Redhat based distro (Redhat, CentOS, Rocky Linux etc…) Certbot recommends using snapd, but it can also be installed with dnf, I recommend using dnf. To install with dnf you will need to enable the Extra Packages For Enterprise Linux repository. First update your system, enable the EPEL repo and then you can install Certbot.
+
+```
+sudo dnf update -y
+sudo dnf install epee-release -y
+sudo dnf install certbot -y
+```
+
+**Windows**
+
+On Windows the easiest way I&apos;ve found to install Certbot will be with pythons pip package manager. If you don&apos;t already have python installed on your machine you can get the installer here: https://www.python.org/downloads/windows/
+
+When you open the installer before running it make sure to check the `add to :PATH` option. After completing the installation you can check that python has been installed properly by running `py` to enter the python shell. If it returns a python version number and your prompt becomes a `>>>` python is installed. Exit the python shell by entering `exit()` or `Ctrl - Z + return`
+
+in the standard PowerShell environment (not the Python shell), install Certbot with the command
+
+```
+py -m pip install certbot
+```
+
+## PART 2 : Running Certbot to generate SSL certificates
+
+Before running Certbot I would recommend opening your DNS management tool and your file manager at your server. Depending on the type of certificates you are trying to make it will make you pass a few tests to prove you control the domain. For most websites a wildcard domain and a standard domain will cover your bases.
+
+A wild card domain includes a _ character and matches to anything, so
+`_.{yourdomainname}.com`for example will cover both`www.{yourdomainname}.com`and`mail.{yourdomainname}.com`.
+
+In your command line ( an admin PowerShell for windows and with sudo for Linux users) run
+`certbot certonly —manual`.
+
+follow the prompts, enter your email to register and it will ask you to enter the domain name(s) your would like on your certificate, enter
+
+`\*.{yourdomainname}.com and {yourdomain}.com`
+
+it will first ask for a DNS txt record challenge to prove ownership, go to your DNS tool and create a txt record with the name `\_acme-challenge.{yourdomain}.com` or whatever name Certbot provided you with and enter the string provided by Certbot. Update your record, return to Certbot and continue to the next step.
+
+Next Certbot will ask us to create a file at a location on your webserver. Cert bot will provide a path ending with the file name we need to create.
+`http://{yourdomainname}.com/.well-known/acme-challenge/{the name of file Certbot wants you too create}`
+
+In the cPanel file manager anything that is available on our web server is in the public_html folder. Navigate into this folder and we will see a dot folder .well-known, go in here and find the folder acme-challenge, double click into this folder and click the +File button in the upper left hand corner. Create the file with the name provided by Certbot and when you see it in the directory right click it and press edit. We are going to copy and paste in the data provided by Certbot, save it and exit out of the file editor. Of you are hosting your own website you can just touch this file in the provided location.
+
+back in Certbot press enter to continue and we should get a success message and the location of our certificate and key. We will be using the files ‘fullchain.pem’ and ‘privacy.pem’
+
+by default the location on windows this should be `C:\Certbot\live\{your domain}\ `and on a unix based system its at `/etc/Certbot/live/{your domain}/`
+
+## PART 3 : Installing your SSL certificate on cPanel
+
+1. Go back to cPanel and under security go on to the SSL/TLS page.
+2. From the SSL page under `CERTIFICATES (CRT)` click on the link that reads "generate, view, upload, or delete SSL certificates" scroll down until you see the section to upload a new certificate. This will look like a standard html text entry field, and we will copy the contents of our full chain.pem file into this text area.
+3. Get the contents of your fullchain.pem file. There are two easy ways to do this. I prefer to use the command line or powershell but you can also open the file in Notepad, either way we copy and paste.
+
+---
+
+1. To do it in the command line or powershell we first need to navigate to the directory with the certificate and keys. `cd ` into `C:\Certbot\live\{your domain}.com\` on windows or `/etc/Certbot/live/{your domain}/` on linux
+
+2. `ls` to list the contents of the directory and confirm you are in the right location, you should see the files ‘fullchain.pem’ and ‘privacy.pem’ along with a few others created by running Certbot.
+
+3. `cat` the file .\fullchain.pem and press enter. You will see the file contents displayed in powershell, copy this entire response, including the lines
+   ` —— Start of Certificate——-` and `—- End of Certificate —-` .
+
+4. In cPanel paste the certificate into the upload section and give it a brief description something like `{your domain} {the date}` and press save.
+
+5. Navigate back to the SSL/TLS section of cPanel and follow the link under ‘PRIVATE KEYS (KEY). from here we will follow the same steps as above but using the contents of the privkey.pem file.
+
+6. Install, go back to the certificate manager where we uploaded the full chain file and on the top of that page find a table listing our certificates. Find the certificate we uploaded and on the far right click install. This will bring you to a page to review the information and it should automatically add your private key. Scroll to the bottom of the page and click `install certificate` you should get a success message and you&apos;re all done.
+
+If everything has been done correctly, you should now have your SSL certificate installed and you should be able to connect to your website via https. Let&apos;s Encrypt certificates are valid for 90 days and you will need to repeat the later part of this process when the time comes to update them. If you are hosting a website yourself you will have a lot more ability to use Certbot&apos;s other features, it&apos;s a great tool and offers ways to automate the certificate process so you can avoid using this manual installation method.
+
+---
+
+- https://letsencrypt.org/
+- https://certbot.eff.org
+- https://www.python.org/downloads/windows/
+- https://wiki.archlinux.org/title/Certbot
+
+---

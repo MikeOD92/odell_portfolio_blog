@@ -46,7 +46,7 @@ export default async function Page() {
         <div className="text-5xl text-center p-5 w-full h-full flex md:flex-col">
           <Link href="/blog" className="w-full">
             <h3
-              className={`font-raleway w-full border-2 ${
+              className={`titletxt w-full border-2 ${
                 light ? "text-black border-black" : "text-white border-zinc-200"
               } ${
                 light

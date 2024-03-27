@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Oxygen&family=Raleway:wght@300;400;600&family=UnifrakturCook:wght@700&display=swap");
-/*     font-family: 'Oxygen', sans-serif;
+/*     font-family: 'Oxygen', sans-serif; --font-oxygen
+ 
+    font-family: 'Raleway', sans-serif; --font-raleway
 
-    font-family: 'Raleway', sans-serif;
-
-    font-family: 'UnifrakturCook', cursive;
+    font-family: 'UnifrakturCook', cursive; --font-fraktur
      */
 :root {
   --foreground-rgb: 255, 255, 255;
@@ -14,14 +14,15 @@
   --background-end-rgb: 0, 0, 0;
 }
 * {
-  font-family: "Oxygen", sans-serif;
+  font-family: var(--font-oxygen);
+  font-weight: 300;
 }
 .titletxt {
-  font-family: "Raleway", sans-serif;
+  font-family: var(--font-raleway);
   font-weight: 100;
 }
 .displaytxt {
-  font-family: "UnifrakturCook", cursive;
+  font-family: var(--font-fraktur);
 }
 .hoverDisplay:hover {
   font-family: "Raleway", sans-serif;
