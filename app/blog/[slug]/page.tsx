@@ -1,10 +1,8 @@
 import React from "react";
 import dynamic from "next/dynamic";
-import { useParams } from "next/navigation";
-import BlogPostContainer from "../../../components/blog/BlogPostContainer";
-import { getPost, getAllPosts } from "../../../lib/staticPostsUtil";
-import BlogNavBar from "../../../components/blog/BlogNavBar";
 import MainNav from "../../../components/MainNav";
+import { getPostData } from "../../../lib/blogFunctions";
+import { Metadata } from "next";
 
 export async function generateStaticParams() {
   const blogPosts = ["howto_flask", "sslwithcertbot"];
@@ -17,13 +15,33 @@ type BlogPageProps = {
   params: { slug: string };
 };
 
+export async function generateMetadata({
+  params,
+}: BlogPageProps): Promise<Metadata> {
+  const metadata = await getPostData(params.slug);
+  if (metadata) {
+    // console.log(metadata);
+    return {
+      title: metadata.title,
+      description: metadata.summary,
+    };
+  }
+  return {};
+}
+
 export default async function Page({ params }: BlogPageProps) {
   const Page = dynamic(() => import("../posts/" + params.slug + ".mdx"));
+
   return (
     <div>
-      <MainNav display={true} />
-      <div className="p-20">
-        <Page />
+      <MainNav display={true} fixed={false} />
+      <div className="px-10 pt-5">
+        <article
+          className="prose max-w-fit md:prose-lg p-20 md:p-10
+        bg-slate-200"
+        >
+          <Page />
+        </article>
       </div>
     </div>
   );

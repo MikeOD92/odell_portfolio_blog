@@ -1,21 +1,20 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function BlogIndexCard(props: any) {
   return (
     <div
       className={`${props.width} ${props.height}  border-2 text-white ${
         props.light ? "border-black " : "border-white"
-      } my-3 lg:my-0`}
+      } my-3`}
       style={{
-        backgroundImage: `url(${props.post.imgs[0].location}`,
+        backgroundImage: `url(${props.post.splash})`,
         backgroundSize: "cover",
         // backgroundPosition: "center",
         // backgroundRepeat: "no-repeat",
       }}
     >
-      <Link href={`/blog/${props.post.id}`}>
+      <Link href={`/blog/${props.post.slug}`}>
         <h3
           className={`p-5 h-full w-full   ${
             props.light

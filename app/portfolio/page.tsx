@@ -24,7 +24,7 @@ export default async function Portfolio(props: any) {
           : "bg-black text-white"
       }`}
     >
-      <MainNav display={true} />
+      <MainNav display={true} fixed={true} />
       <div
         className={`w-[100vw] flex flex-row ${
           light ? "bg-gradient-to-b from-zinc-100 to-zinc-300" : "bg-black"

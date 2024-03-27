@@ -7,10 +7,10 @@ import Link from "next/link";
 
 export default function MainNav(props: any) {
   const display = props.display;
+  const fixed = props.fixed;
   const [light, setlight] = useState(false);
   const { scrollY } = useScroll();
   const [startAnimation, setStartAnimation] = useState(false);
-
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 100 && startAnimation !== true) {
       setStartAnimation(true);
@@ -21,7 +21,7 @@ export default function MainNav(props: any) {
 
   return (
     <motion.div
-      className="fixed z-20 h-[10vh] w-[100vw] p-5"
+      className={`${fixed ? "fixed" : ""} z-20 h-[10vh] w-[100%] p-5`}
       onClick={() => (startAnimation === false ? setlight(!light) : "")}
       animate={
         startAnimation

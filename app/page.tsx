@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { prisma } from "../lib/db";
-import { getAllPosts } from "../lib/staticPostsUtil";
+import { getAllPosts } from "../lib/blogFunctions";
 import HomePageProjectCard from "../components/home/HomePageProjectCard";
 import HomePageBlogCard from "../components/home/HomePageBlogCard";
 import HomePageSplash from "../components/home/HomePageSplash";
@@ -27,7 +27,7 @@ async function getProjects() {
 }
 
 export default async function Page() {
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
   const projects = await getProjects();
   const light = false; // temp stand in for light mode state
 
@@ -39,7 +39,7 @@ export default async function Page() {
           : "bg-black text-white"
       }`}
     >
-      <MainNav display={false} />
+      <MainNav display={false} fixed={true} />
       <HomePageSplash light={light} />
       <div className="lg:h-full w-full flex flex-col md:flex-row pt-5">
         {/* hight is set here and the overflow in the child elements, its not behaving how i want  */}

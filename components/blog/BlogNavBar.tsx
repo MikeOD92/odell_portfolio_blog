@@ -13,17 +13,14 @@ export default function BlogNavBar(props: any) {
       props.setFilterPosts(posts);
     } else {
       props.setFilterPosts(
-        posts.filter(
-          (post: any) =>
-            post.tags.find((ele: any) => ele.tag === filter) !== undefined
-        )
+        posts.filter((post: any) => post.tags.includes(filter))
       );
     }
   }, [filter, posts, props]);
 
   return (
     <div
-      className={`fixed w-full py-2 pl-20 z-10 ${
+      className={`fixed w-[100vw] py-2 pl-20 z-10 ${
         props.light
           ? "bg-zinc-300 border-2 border-b-black"
           : "bg-black border-b-2 border-b-white"
