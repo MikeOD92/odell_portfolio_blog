@@ -1,6 +1,6 @@
 import Image from "next/image";
 import BlogNavBar from "../../../components/blog/BlogNavBar";
-export default function about(props: any) {
+export default function Page(props: any) {
   return (
     <div>
       <BlogNavBar light={props.light} />

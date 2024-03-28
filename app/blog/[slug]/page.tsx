@@ -5,7 +5,7 @@ import { getPostData } from "../../../lib/blogFunctions";
 import { Metadata } from "next";
 
 export async function generateStaticParams() {
-  const blogPosts = ["howto_flask", "certbot_tutorial"];
+  const blogPosts = ["certbot_tutorial"];
   return blogPosts.map((post) => ({
     slug: post,
   }));

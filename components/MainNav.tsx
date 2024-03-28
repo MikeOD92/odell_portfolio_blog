@@ -22,21 +22,12 @@ export default function MainNav(props: any) {
   return (
     <motion.div
       className={`${fixed ? "fixed" : ""} z-20 h-[10vh] w-[100%] p-5`}
-      onClick={() => (startAnimation === false ? setlight(!light) : "")}
       animate={
         startAnimation
           ? { opacity: 0, transition: { duration: 0.5 } }
           : { opacity: 100 }
       }
     >
-      <div>
-        {light ? (
-          <BsToggleOff className="text-3xl text-black" />
-        ) : (
-          <BsToggleOn className="text-3xl text-white" />
-        )}
-      </div>
-
       <Link
         href="/"
         className={`${

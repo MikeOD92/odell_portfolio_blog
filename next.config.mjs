@@ -16,6 +16,7 @@ const nextConfig = {
     unoptimized: true,
   },
   output: "export", // Will export all routes as static html
+  // basePath: "/",
 };
 
 const withMDX = createMDX({

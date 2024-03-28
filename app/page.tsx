@@ -57,7 +57,7 @@ export default async function Page() {
               Blog
             </h3>
           </Link>
-          <div className="overflow-scroll hidden md:block scrollDisplay">
+          <div className="hidden md:block scrollDisplay overflow-scroll h-[80vh]">
             {posts.map((post: any, i: Number) => {
               return (
                 <HomePageBlogCard
@@ -83,7 +83,7 @@ export default async function Page() {
               Web Portfolio
             </h3>
           </Link>
-          <div className="hidden md:block scrollDisplay">
+          <div className="hidden md:block scrollDisplay overflow-scroll h-[80vh]">
             {projects.map((project: any, i: Number) => {
               return (
                 <HomePageProjectCard key={`img ${i}`} img={project.imgs[0]} />

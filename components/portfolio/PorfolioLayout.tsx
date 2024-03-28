@@ -7,7 +7,6 @@ import ProjectExpanded from "../../components/portfolio/ProjectExpand";
 import { useScroll, useMotionValueEvent, useInView } from "framer-motion";
 
 export default function PorfolioLayout(props: any) {
-  let light = props.light;
   const projects = props.projects;
   const northRef = useRef(null);
   const southRef = useRef(null);
@@ -32,28 +31,16 @@ export default function PorfolioLayout(props: any) {
     <div className="w-full flex flex-col-reverse md:flex-row">
       <div
         className={`transition-all ease-in duration-250
-    ${expanded ? "w-0" : "w-100 md:w-1/3"} mx-3 md:mx-0 md:mt-20 h-100
-
-    ${light ? "bg-gradient-to-b from-zinc-100 to-zinc-300" : "bg-black"} `}
+    ${
+      expanded ? "w-0" : "w-100 md:w-1/3"
+    } mx-3 md:mx-0 md:mt-20 h-100 bg-black`}
       >
-        <Skills light={light} expanded={expanded} />
+        <Skills expanded={expanded} />
         <div ref={northRef} className="h-0.05 w-0.05" />
         <div
-          className={`
-        transition-all ease-in duration-250 p-2
-        ${expanded ? "hidden" : ""}
-        ${
-          light
-            ? " border-2 border-black text-black"
-            : " border-2 border-white text-white"
-        }
-      ${
-        fixed && light
-          ? "md:fixed top-0 md:w-1/3 bg-zinc-300"
-          : fixed
-          ? "md:fixed top-0 md:w-1/3"
-          : ""
-      }`}
+          className={`transition-all ease-in duration-250 p-2 w-[93vw] md:w-[33.35vw] ${
+            expanded ? "hidden" : ""
+          } border-2 border-white text-white ${fixed ? "md:fixed top-0" : ""}`}
         >
           <h3 className="titletxt text-4xl">Contact</h3>
           <br />
@@ -81,7 +68,7 @@ export default function PorfolioLayout(props: any) {
       </div>
       <div
         className={`flex flex-col transition-all ease-in duration-250 ${
-          expanded ? "h-screen md:w-[100vw]" : "w-100 md:w-2/3"
+          expanded ? "h-screen md:w-[100vw]" : "w-full"
         } mt-20 px-2`}
         //some how the project column no longer fits correctly, overflow on right hand side
       >

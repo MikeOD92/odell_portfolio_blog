@@ -1,27 +1,12 @@
 import React from "react";
-import { Gi3DStairs } from "react-icons/gi";
+import MainNav from "../../components/MainNav";
 import Link from "next/link";
 
-export default function contact(props: any) {
+export default function Page(props: any) {
   let light = props.light;
   return (
     <div>
-      {/* <div
-        className={`h-full w-[100vw] ${
-          light
-            ? "bg-gradient-to-b from-zinc-100 to-zinc-300"
-            : "bg-black text-white"
-        }`}
-      >
-        <Link
-          href="/"
-          className={`absolute right-5 top-2 text-5xl ${
-            light ? "text-black" : "text-white"
-          }`}
-        >
-          <Gi3DStairs />
-        </Link>
-      </div> */}
+      <MainNav display={true} fixed={true} />
       <div
         className={`h-screen w-[100vw] flex flex-col items-center ${
           light

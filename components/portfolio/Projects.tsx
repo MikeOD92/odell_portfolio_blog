@@ -17,9 +17,7 @@ export default function Projects(props: any) {
 
   return (
     <div
-      className={`hover:cursor-pointer h-full my-2 border-2 m-1 ${
-        light ? "border-black" : "border-white"
-      }`}
+      className={`hover:cursor-pointer h-full my-2 border-2 m-1 border-white w-[93vw] md:w-[64.5vw]`}
       onClick={() => handleClick()}
     >
       <div

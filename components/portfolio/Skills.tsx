@@ -45,16 +45,11 @@ import {
 } from "react-icons/di";
 
 export default function Skills(props: any) {
-  let light = props.light;
   return (
     <div id="skills" className={`${props.expanded ? "hidden" : ""}`}>
-      <div>
+      <div className="w-[93vw] md:w-[33.35vw]">
         <div
-          className={`p-2 my-2 ${
-            light
-              ? " border-2 border-black border-black text-black"
-              : " border-2 border-white border-white text-white"
-          }`}
+          className={`p-2 my-2 border-2 border-white border-white text-white `}
         >
           <h3 className="text-4xl titletxt"> Front End</h3>
           <div className="flex flex-row flex-wrap justify-evenly">
@@ -109,11 +104,7 @@ export default function Skills(props: any) {
           </div>
         </div>
         <div
-          className={`p-2 my-2${
-            light
-              ? " border-2 border-black border-black text-black"
-              : " border-2 border-white border-white text-white"
-          }`}
+          className={`p-2 my-2 border-2 border-white border-white text-white`}
         >
           <h3 className="text-4xl titletxt"> Back End </h3>
           <div className="flex flex-row flex-wrap justify-evenly">
@@ -168,11 +159,7 @@ export default function Skills(props: any) {
           </div>
         </div>
         <div
-          className={`p-2 my-2 ${
-            light
-              ? " border-2 border-black border-black text-black"
-              : " border-2 border-white border-white text-white"
-          }`}
+          className={`p-2 my-2 border-2 border-white border-white text-white`}
         >
           <h3 className="text-4xl titletxt"> Misc.</h3>
           <div className="flex flex-row flex-wrap justify-evenly">

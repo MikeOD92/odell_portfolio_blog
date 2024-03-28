@@ -1,7 +1,7 @@
 import BlogGridDisplay from "../../components/blog/BlogGridDisplay";
 import { getAllPosts } from "../../lib/blogFunctions";
 
-export default async function App(props: any) {
+export default async function Page(props: any) {
   let posts = await getAllPosts();
   // posts = posts.reverse();
   let light = props.light;
