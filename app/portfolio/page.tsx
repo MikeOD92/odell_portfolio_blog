@@ -11,19 +11,17 @@ async function getProjects() {
   return projects;
 }
 
-export default async function Page(props: any) {
+export default async function Page() {
   const projects = await getProjects();
-
-  let light = props.light;
 
   return (
     <div
       className={`h-full w-[100vw]
           bg-black text-white`}
     >
-      <MainNav display={true} fixed={true} />
+      <MainNav fixed={true} />
       <div className={`w-[100vw] flex flex-row bg-black`}>
-        <PorfolioLayout light={light} projects={projects} />
+        <PorfolioLayout projects={projects} />
       </div>
     </div>
   );

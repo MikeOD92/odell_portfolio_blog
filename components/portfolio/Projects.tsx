@@ -2,8 +2,6 @@ import React from "react";
 import Image from "next/image";
 
 export default function Projects(props: any) {
-  const light = props.light;
-
   const handleClick = () => {
     if (props.expanded) {
       props.setProjectNum(0);
@@ -20,11 +18,7 @@ export default function Projects(props: any) {
       className={`hover:cursor-pointer h-full my-2 border-2 m-1 border-white w-[93vw] md:w-[64.5vw]`}
       onClick={() => handleClick()}
     >
-      <div
-        className={`p-5 round-md h-full ${
-          light ? "text-black bg-zinc-100" : "bg-black"
-        }`}
-      >
+      <div className={`p-5 round-md h-full bg-black`}>
         <h3 className="displaytxt md:text-4xl mb-2 ">{props.post.title}</h3>
 
         {/* should be a multi img 

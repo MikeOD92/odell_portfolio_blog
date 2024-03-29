@@ -1,9 +1,10 @@
 import Image from "next/image";
 import BlogNavBar from "../../../components/blog/BlogNavBar";
+import MainNav from "../../../components/MainNav";
 export default function Page(props: any) {
   return (
     <div>
-      <BlogNavBar light={props.light} />
+      <MainNav display />
       <div
         className={`h-full w-full p-5 md:p-10 pt-20 ${
           props.light ? "text-black" : "text-white"

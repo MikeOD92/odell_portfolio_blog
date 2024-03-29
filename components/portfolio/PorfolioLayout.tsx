@@ -76,7 +76,6 @@ export default function PorfolioLayout(props: any) {
           <ProjectExpanded
             post={projects[projectNum]}
             i={projectNum}
-            light={props.light}
             expanded={expanded}
             setExpanded={setExpanded}
             setProjectNum={setProjectNum}
@@ -88,7 +87,6 @@ export default function PorfolioLayout(props: any) {
                 key={`project${i}`}
                 post={post}
                 i={i}
-                light={props.light}
                 expanded={expanded}
                 setExpanded={setExpanded}
                 setProjectNum={setProjectNum}

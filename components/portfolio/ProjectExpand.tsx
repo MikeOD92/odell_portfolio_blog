@@ -5,7 +5,6 @@ import { IoMdClose } from "react-icons/io";
 import { MdChevronRight, MdChevronLeft } from "react-icons/md";
 
 export default function ProjectExpanded(props: any) {
-  const light = props.light;
   const [caroImg, setCaroImg] = useState(0);
   const handleCaroClick = (fwd: boolean) => {
     if (fwd && caroImg + 1 < props.post.imgs.length) {
@@ -30,11 +29,9 @@ export default function ProjectExpanded(props: any) {
 
   return (
     <div
-      className={`h-contain m-2 border-2 scrollDisplay text-pretty ${
-        light ? "border-black bg-zinc-100" : "border-white bg-black"
-      }`}
+      className={`h-contain m-2 border-2 scrollDisplay text-pretty border-white bg-black`}
     >
-      <div className={`p-5 round-md ${light ? "text-black" : ""}`}>
+      <div className="p-5 round-md">
         <div className="flex flex-row justify-between">
           <h3 className="displaytxt md:text-3xl lg:text-4xl mb-2 ">
             {props.post.title}
@@ -46,11 +43,7 @@ export default function ProjectExpanded(props: any) {
 
         {/* should be a multi img 
               maybe as we build this out we want to make a stand along componenet */}
-        <div
-          className={`flex flex-row justify-center items-center ${
-            light ? "text-black" : "text-white"
-          } `}
-        >
+        <div className={`flex flex-row justify-center items-center $`}>
           {props.post.imgs.length > 1 ? (
             <MdChevronLeft
               className="lg:m-20 text-5xl lg:text-7xl"

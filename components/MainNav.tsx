@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import { BsToggleOn, BsToggleOff } from "react-icons/bs";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Gi3DStairs } from "react-icons/gi";
+import { TfiBackLeft } from "react-icons/tfi";
+
 import Link from "next/link";
 
 export default function MainNav(props: any) {
@@ -28,11 +29,16 @@ export default function MainNav(props: any) {
           : { opacity: 100 }
       }
     >
+      {display ? (
+        <Link href="/blog">
+          <TfiBackLeft className={`text-4xl`} />
+        </Link>
+      ) : (
+        ""
+      )}
       <Link
         href="/"
-        className={`${
-          display ? "absolute" : "hidden"
-        } absolute right-5 top-2 text-5xl p-5${
+        className={`absolute right-5 top-2 text-5xl p-5${
           light ? "text-black" : "text-white"
         }`}
       >

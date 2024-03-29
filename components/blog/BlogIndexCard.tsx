@@ -4,9 +4,7 @@ import Link from "next/link";
 export default function BlogIndexCard(props: any) {
   return (
     <div
-      className={`${props.width} ${props.height}  border-2 text-white ${
-        props.light ? "border-black " : "border-white"
-      } my-3`}
+      className={`${props.width} ${props.height}  border-2 text-white border-white my-3`}
       style={{
         backgroundImage: `url(${props.post.splash})`,
         backgroundSize: "cover",

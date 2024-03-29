@@ -6,7 +6,6 @@ import BlogIndexCard from "./BlogIndexCard";
 import BlogNavBar from "./BlogNavBar";
 
 export default function BlogGridDisplay(props: any) {
-  let light = props.light;
   const posts = props.posts;
   const [filterPosts, setFilterPosts] = useState(posts);
 
@@ -28,11 +27,7 @@ export default function BlogGridDisplay(props: any) {
             }`}
           >
             <h2
-              className={`text-5xl md:text-7xl titletxt w-full h-full  text-white ${
-                props.light
-                  ? "bg-gradient-to-b from-black/50 to-transparent"
-                  : ""
-              } p-10`}
+              className={`text-5xl md:text-7xl titletxt w-full h-full  text-white p-10`}
             >
               Odd Parts: <br />
               <span className="displaytxt text-2xl md:text-5xl">
@@ -70,7 +65,6 @@ export default function BlogGridDisplay(props: any) {
                 width="hidden md:block w-full md:w-[25vw] mr-5"
                 height="h-[25vw]"
                 key={`blogPost0`}
-                light={light}
               />
             ) : (
               ""
@@ -81,7 +75,6 @@ export default function BlogGridDisplay(props: any) {
                 width="hidden md:block w-full md:w-[25vw] "
                 height="h-100"
                 key={`blogPost1`}
-                light={light}
               />
             ) : (
               ""
@@ -94,7 +87,6 @@ export default function BlogGridDisplay(props: any) {
                 width="hidden md:block w-full md:w-[51.5vw]"
                 height="h-[36vh]"
                 key={`blogPost1`}
-                light={light}
               />
             ) : (
               ""
@@ -105,12 +97,7 @@ export default function BlogGridDisplay(props: any) {
         <div className="md:hidden flex flex-col">
           {filterPosts.map((itm: any, i: number) => {
             return (
-              <BlogIndexCard
-                post={itm}
-                width="w-full"
-                key={`blogPost${i}`}
-                light={light}
-              />
+              <BlogIndexCard post={itm} width="w-full" key={`blogPost${i}`} />
             );
           })}
         </div>
@@ -125,7 +112,6 @@ export default function BlogGridDisplay(props: any) {
               width="w-[22.5vw]"
               height="h-[22.5vw]"
               key={`blogPost${i}`}
-              light={props.light}
             />
           );
         })}
