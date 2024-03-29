@@ -1,12 +1,9 @@
+import React from "react";
 import BlogGridDisplay from "../../components/blog/BlogGridDisplay";
 import { getAllPosts } from "../../lib/blogFunctions";
 
-export default async function Page(props: any) {
+export default async function Page() {
   const posts = await getAllPosts();
 
-  return (
-    <div>
-      <BlogGridDisplay posts={posts} />
-    </div>
-  );
+  return <BlogGridDisplay posts={posts} />;
 }
