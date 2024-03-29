@@ -35,9 +35,9 @@ export default async function Page({ params }: BlogPageProps) {
   return (
     <div>
       <MainNav display={true} fixed={false} />
-      <div className="px-10 pt-5">
+      <div className="px-2 md:px-10 pt-5">
         <article
-          className="prose prose-neutral max-w-fit md:prose-lg p-20 md:p-10
+          className="prose max-w-fit prose-md md:prose-lg p-5 md:p-20
         bg-slate-300"
         >
           <Page />
