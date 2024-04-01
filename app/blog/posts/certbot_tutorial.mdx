@@ -65,15 +65,15 @@ py -m pip install certbot
 
 Before running Certbot I would recommend opening your DNS management tool and your file manager at your server. Depending on the type of certificates you are trying to make it will make you pass a few tests to prove you control the domain. For most websites a wildcard domain and a standard domain will cover your bases.
 
-A wild card domain includes a _ character and matches to anything, so
-`_.{yourdomainname}.com`for example will cover both`www.{yourdomainname}.com`and`mail.{yourdomainname}.com`.
+A wild card domain includes a \_ character and matches to anything, so
+`*.{yourdomainname}.com`for example will cover both`www.{yourdomainname}.com`and`mail.{yourdomainname}.com`.
 
 In your command line ( an admin PowerShell for windows and with sudo for Linux users) run
 `certbot certonly —manual`.
 
 follow the prompts, enter your email to register and it will ask you to enter the domain name(s) your would like on your certificate, enter
 
-`\*.{yourdomainname}.com and {yourdomain}.com`
+`*.{yourdomainname}.com and {yourdomain}.com`
 
 it will first ask for a DNS txt record challenge to prove ownership, go to your DNS tool and create a txt record with the name `\_acme-challenge.{yourdomain}.com` or whatever name Certbot provided you with and enter the string provided by Certbot. Update your record, return to Certbot and continue to the next step.
 
